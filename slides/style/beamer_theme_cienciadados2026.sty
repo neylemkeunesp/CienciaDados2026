@@ -1,0 +1,104 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamer_theme_cienciadados2026}[2026/01/01 Tema Beamer Moderno para Ciência de Dados 2026]
+
+% Pacotes essenciais
+\RequirePackage[brazilian]{babel}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{booktabs}
+\RequirePackage{listings}
+\RequirePackage{tikz}
+
+% Paleta de cores moderna 2026
+\definecolor{cdDarkBlue}{RGB}{15, 37, 69}
+\definecolor{cdMedBlue}{RGB}{27, 73, 115}
+\definecolor{cdTeal}{RGB}{14, 124, 134}
+\definecolor{cdAccent}{RGB}{217, 119, 6}
+\definecolor{cdBgLight}{RGB}{248, 250, 252}
+\definecolor{cdText}{RGB}{30, 41, 59}
+\definecolor{cdCodeBg}{RGB}{241, 245, 249}
+\definecolor{cdGray}{RGB}{100, 116, 139}
+
+% Configuração das cores do Beamer
+\setbeamercolor{structure}{fg=cdDarkBlue}
+\setbeamercolor{palette primary}{bg=cdDarkBlue,fg=white}
+\setbeamercolor{palette secondary}{bg=cdMedBlue,fg=white}
+\setbeamercolor{palette tertiary}{bg=cdTeal,fg=white}
+\setbeamercolor{palette quaternary}{bg=cdDarkBlue,fg=white}
+
+\setbeamercolor{title}{fg=white,bg=cdDarkBlue}
+\setbeamercolor{subtitle}{fg=cdBgLight}
+\setbeamercolor{frametitle}{fg=white,bg=cdDarkBlue}
+\setbeamercolor{normal text}{fg=cdText,bg=white}
+\setbeamercolor{block title}{bg=cdMedBlue,fg=white}
+\setbeamercolor{block body}{bg=cdBgLight,fg=cdText}
+\setbeamercolor{block title example}{bg=cdTeal,fg=white}
+\setbeamercolor{block body example}{bg=cdBgLight,fg=cdText}
+\setbeamercolor{block title alerted}{bg=cdAccent,fg=white}
+\setbeamercolor{block body alerted}{bg=cdBgLight,fg=cdText}
+\setbeamercolor{item}{fg=cdTeal}
+
+% Configurações visuais gerais
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\setbeamertemplate{items}[circle]
+
+% Cabeçalho do frame
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.4ex,leftskip=1.2cm]{frametitle}
+    \strut\textbf{\insertframetitle}\strut
+    \ifx\insertframesubtitle\@empty\else%
+      {\small\normalfont\space\textbar\space\textit{\insertframesubtitle}}%
+    \fi%
+  \end{beamercolorbox}%
+}
+
+% Rodapé minimalista e informativo
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1ex,leftskip=1cm,rightskip=1cm]{palette secondary}
+    \footnotesize
+    \textbf{Ciência dos Dados (2026)} \hfill \insertshorttitle{} \hfill \insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}%
+}
+
+% Slide de Título
+\defbeamertemplate*{title page}{custom}[1][]{
+  \vbox{}
+  \vfill
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center,rounded=true,shadow=false]{title}
+      {\LARGE \textbf{\inserttitle}}\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.3em%
+        {\normalsize \textit{\insertsubtitle}}\par%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1.5em%
+    {\large \textbf{\insertauthor}}\par%
+    \vskip0.3em%
+    {\footnotesize \insertinstitute}\par%
+    \vskip0.8em%
+    {\footnotesize \insertdate}\par%
+  \end{centering}
+  \vfill
+}
+
+% Configuração do listings para código Python
+\lstset{
+  language=Python,
+  backgroundcolor=\color{cdCodeBg},
+  basicstyle=\ttfamily\scriptsize\color{cdText},
+  keywordstyle=\bfseries\color{cdDarkBlue},
+  stringstyle=\color{cdAccent},
+  commentstyle=\itshape\color{cdGray},
+  showstringspaces=false,
+  numbers=none,
+  frame=single,
+  frameround=tttt,
+  rulecolor=\color{cdGray!30},
+  xleftmargin=0.5em,
+  xrightmargin=0.5em,
+  breaklines=true,
+  tabsize=4
+}

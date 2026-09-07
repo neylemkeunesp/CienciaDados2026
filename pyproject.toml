@@ -1,0 +1,27 @@
+[project]
+name = "cienciadosdados2026"
+version = "2026.1.0"
+description = "Material do Curso de Ciência dos Dados I: Análise Exploratória (Versão 2026) - IB Botucatu / UNESP"
+authors = [
+    { name = "Ney Lemke", email = "ney.lemke@unesp.br" }
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jupyterlab>=4.2.0",
+    "notebook>=7.2.0",
+    "ipykernel>=6.29.0",
+    "nbformat>=5.10.0",
+    "nbconvert>=7.16.0",
+    "pandas>=2.2.0",
+    "numpy>=2.0.0",
+    "matplotlib>=3.9.0",
+    "seaborn>=0.13.0",
+    "scikit-learn>=1.5.0",
+    "pyarrow>=17.0.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+]

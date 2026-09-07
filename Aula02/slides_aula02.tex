@@ -1,0 +1,89 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 02 - Ecossistema Jupyter]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 02: O Ecossistema Jupyter e Computação Científica Interativa}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Origem e Filosofia do Jupyter}
+
+\begin{frame}{Do IPython ao Projeto Jupyter}
+  \begin{itemize}
+    \item \textbf{2001}: Fernando Pérez cria o \textbf{IPython} para trazer interatividade superior ao interpretador Python padrão.
+    \item \textbf{2011}: Lançamento do formato de notebook baseado em navegador web (\texttt{.ipynb}).
+    \item \textbf{2014}: Nascimento do \textbf{Projeto Jupyter} (acrônimo para \textbf{Ju}lia, \textbf{Pyt}hon e \textbf{R}), desacoplando a interface da linguagem de programação.
+    \item \textbf{Hoje (2026)}: Padrão universal na academia e indústria (JupyterLab 4+, Google Colab, VS Code, Kaggle).
+  \end{itemize}
+\end{frame}
+
+\section{Arquitetura do Jupyter}
+
+\begin{frame}{Arquitetura Cliente-Servidor e Protocolo ZeroMQ}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{1. Interface do Usuário (Cliente)}
+        Navegador web enviando comandos e renderizando saídas (HTML, SVG, Canvas, LaTeX, imagens).
+      \end{block}
+      \begin{block}{2. Servidor Jupyter}
+        Gerencia autenticação, arquivos no disco e conexões de rede via WebSockets.
+      \end{block}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{3. Kernel (IPykernel)}
+        Processo isolado que executa o código Python na memória e retorna os resultados via mensagens estruturadas JSON (ZeroMQ).
+      \end{block}
+      \begin{block}{Vantagem Arquitetural}
+        O kernel pode estar rodando em uma GPU remota na nuvem enquanto a interface roda localmente no seu notebook.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Reprodutibilidade Científica}
+
+\begin{frame}{O Desafio da Reprodutibilidade em Notebooks}
+  \begin{alertblock}{O Perigo do Estado Oculto}
+    Notebooks permitem execução não-linear de células. Se você executar a célula 5, depois a célula 2 e depois a 4, o estado da memória pode se tornar inconsistente e irreprodutível para outros pesquisadores!
+  \end{alertblock}
+  \begin{block}{Regra de Ouro do Cientista de Dados}
+    Antes de submeter um relatório ou compartilhar um notebook, execute sempre: \\
+    \textbf{Kernel $\rightarrow$ Restart Kernel and Run All Cells} \\
+    Garanta que o caderno execute do início ao fim sem falhas.
+  \end{block}
+\end{frame}
+
+\section{Recursos Avançados: Markdown e Magics}
+
+\begin{frame}[fragile]{Comandos Mágicos do IPython}
+  Comandos especiais que estendem a capacidade do Python:
+  \begin{itemize}
+    \item \texttt{\%timeit}: Mede o tempo médio de execução de instruções com alta precisão estatística.
+    \item \texttt{\%whos}: Lista todas as variáveis ativas em memória com seus tipos e tamanhos.
+    \item \texttt{!\textit{comando}}: Executa comandos no shell do sistema operacional diretamente da célula.
+  \end{itemize}
+  \begin{lstlisting}
+# Exemplo no notebook:
+%timeit sum(range(1_000_000))
+!ls -lh dados/
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Jupyter combina narrativa, código e visualização em documentos executáveis vivos.
+    \item O kernel é o motor de execução e deve ser mantido limpo e reprodutível.
+    \item \textbf{Prática}: Dominar comandos mágicos, Markdown técnico e equações LaTeX.
+  \end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,80 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 05 - Fundamentos de Python]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 05: Fundamentos de Python: Sintaxe, Strings e Formatação Moderna}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Filosofia e Legibilidade}
+
+\begin{frame}{O Zen do Python (\texttt{import this})}
+  \begin{itemize}
+    \item \textit{"Bonito é melhor que feio."}
+    \item \textit{"Explícito é melhor que implícito."}
+    \item \textit{"Simples é melhor que complexo."}
+    \item \textit{"Legibilidade conta."}
+  \end{itemize}
+  \begin{block}{PEP 8: Guia de Estilo Oficial}
+    Identação obrigatória de 4 espaços (nunca misturar com tabs), nomenclatura \texttt{snake\_case} para funções e variáveis, e espaçamento consistente ao redor de operadores.
+  \end{block}
+\end{frame}
+
+\section{Manipulação e Sanitização de Strings}
+
+\begin{frame}[fragile]{Métodos Essenciais para Limpeza de Dados Textuais}
+  \begin{itemize}
+    \item \texttt{str.strip()}: Remove espaços em branco e quebras de linha nas extremidades.
+    \item \texttt{str.split(';')}: Divide o texto em uma lista de strings baseando-se em um delimitador.
+    \item \texttt{str.join(lista)}: Concatena uma lista de palavras usando um separador.
+    \item \texttt{str.replace(antigo, novo)}: Substitui ocorrências de padrões no texto.
+  \end{itemize}
+  \begin{lstlisting}
+registro = "   P01 ; Glicose ; 115.4 mg/dL \n"
+campos = [c.strip() for c in registro.split(';')]
+# Resultado: ['P01', 'Glicose', '115.4 mg/dL']
+  \end{lstlisting}
+\end{frame}
+
+\section{F-Strings e Fatiamento de Sequências}
+
+\begin{frame}[fragile]{Interpolação Moderna e Slicing}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{F-strings Avançadas}
+      \begin{lstlisting}
+valor = 1420.5
+taxa = 0.0825
+print(f"R$ {valor:10.2f}")
+print(f"Taxa: {taxa:.1%}")
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Fatiamento: \texttt{[start:stop:step]}}
+      \begin{lstlisting}
+seq = "DNA_TTAGCA"
+print(seq[4:])    # 'TTAGCA'
+print(seq[::-1])  # 'ACGATT_AND'
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Strings são sequências imutáveis fundamentais para identificadores, categorias e logs.
+    \item F-strings oferecem precisão decimal e formatação clara para relatórios analíticos.
+    \item \textbf{Prática}: Higienização de cadastros e extração de padrões em dados brutos.
+  \end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,94 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 09 - Pandas I]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 09: Análise de Dados com Pandas I: Series, DataFrames e Indexação}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{O Papel do Pandas no Ecossistema}
+
+\begin{frame}{Por que Pandas?}
+  Criada por Wes McKinney em 2008, o Pandas é a espinha dorsal da análise de dados tabulares em Python:
+  \begin{itemize}
+    \item Combina o desempenho de vetores contíguos do NumPy com a flexibilidade de planilhas e bancos relacionais.
+    \item Suporta rótulos explícitos de linhas e colunas (índices).
+    \item Facilita alinhamento automático de dados e tratamento de dados ausentes.
+  \end{itemize}
+  \begin{block}{Estruturas Centrais}
+    \begin{itemize}
+      \item \textbf{Series}: Matriz unidimensional rotulada capaz de conter qualquer tipo de dados.
+      \item \textbf{DataFrame}: Estrutura de dados tabular bidimensional com eixos rotulados (linhas e colunas).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Indexação Rigorosa: \texttt{loc} vs. \texttt{iloc}}
+
+\begin{frame}[fragile]{Seleção de Dados sem Ambiguidade}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{\texttt{.loc[linhas, colunas]}}
+        \textbf{Baseada em RÓTULOS}:
+        \begin{itemize}
+          \item Usa nomes das colunas e índices.
+          \item Intervalo inclui o ponto final!
+        \end{itemize}
+      \end{block}
+      \begin{lstlisting}
+df.loc[0:3, ['idade', 'glicose']]
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\texttt{.iloc[linhas, colunas]}}
+        \textbf{Baseada em POSIÇÃO INTEIRA}:
+        \begin{itemize}
+          \item Usa inteiros de 0 a $N-1$.
+          \item Semelhante ao slicing de listas.
+        \end{itemize}
+      \end{block}
+      \begin{lstlisting}
+df.iloc[0:4, [1, 2]]
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+  \begin{alertblock}{Evite Métodos Antigos}
+    O indexador legado \texttt{.ix[]} foi completamente removido nas versões modernas do Pandas.
+  \end{alertblock}
+\end{frame}
+
+\section{Filtros Booleanos e Sumários}
+
+\begin{frame}[fragile]{Filtros com Máscaras Lógicas}
+  \begin{lstlisting}
+# Operadores bitwise: & (E), | (OU), ~ (NAO)
+# Parenteses sao estritamente OBRIGATORIOS ao redor de cada condicao
+pacientes_risco = df[(df['idade'] > 60) & (df['glicose'] >= 126)]
+  \end{lstlisting}
+  \begin{block}{Inspeção Rápida}
+    \begin{itemize}
+      \item \texttt{df.head()}: Primeiras 5 linhas.
+      \item \texttt{df.info()}: Tipos de dados e contagem de não-nulos.
+      \item \texttt{df.describe()}: Média, desvio padrão, quartis, mínimo e máximo.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item DataFrames são matrizes heterogêneas com índices nomeados para análise rápida.
+    \item Utilize \texttt{.loc} para rótulos e \texttt{.iloc} para posições numéricas.
+    \item \textbf{Prática}: Carregamento de CSVs, seleção colunar e filtros booleanos.
+  \end{itemize}
+\end{frame}
+
+\end{document}

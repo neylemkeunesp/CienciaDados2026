@@ -1,0 +1,36 @@
+# Ambientes Virtuais
+.venv/
+env/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# LaTeX Auxiliares (mantendo os .pdf em pdf_slides/ e AulaXX/)
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Arquivos de Sistema
+.DS_Store
+Thumbs.db
+*:Zone.Identifier
+
+# Arquivos temporários e backups
+archive/
+*.term

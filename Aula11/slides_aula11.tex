@@ -1,0 +1,73 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 11 - NumPy Vetorial]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 11: Computação Científica de Alta Performance com NumPy}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Por que NumPy?}
+
+\begin{frame}{Estrutura Interna do \texttt{ndarray}}
+  Listas padrão de Python guardam ponteiros para objetos genéricos espalhados na memória heap.
+  \begin{block}{O Array NumPy (\texttt{np.ndarray})}
+    \begin{itemize}
+      \item Bloco contíguo de bytes em memória RAM (escrito em C/Fortran).
+      \item Tipo homogêneo e fixo (\texttt{dtype}: \texttt{float64}, \texttt{int32}, etc.).
+      \item Permite ao processador utilizar instruções SIMD (Single Instruction, Multiple Data) e vetorização no nível do hardware.
+      \item Acelerações típicas de \textbf{10x a 100x} em relação a loops \texttt{for} nativos de Python!
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Vetorização e Universal Functions}
+
+\begin{frame}[fragile]{Vetorização: Eliminando Laços Explícitos}
+  Em vez de iterar elemento por elemento, aplicamos a operação ao vetor inteiro:
+  \begin{lstlisting}
+import numpy as np
+
+arr = np.linspace(0, 10, 1_000_000)
+
+# Vetorizacao com Universal Functions (ufuncs)
+seno = np.sin(arr)
+potencia = arr ** 2
+  \end{lstlisting}
+  \begin{exampleblock}{Código Limpo e Rápido}
+    A sintaxe aproxima o código Python diretamente da notação matemática da álgebra linear.
+  \end{exampleblock}
+\end{frame}
+
+\section{Regras de Broadcasting}
+
+\begin{frame}[fragile]{Operando em Arrays com Formatos Distintos}
+  Broadcasting descreve como o NumPy trata arrays com shapes diferentes durante operações aritméticas:
+  \begin{itemize}
+    \item Se os arrays não possuem o mesmo número de dimensões, adiciona-se 1 à esquerda.
+    \item Arrays com tamanho 1 em uma dimensão são "esticados" para coincidir com a dimensão maior sem alocar memória adicional.
+  \end{itemize}
+  \begin{lstlisting}
+matriz = np.ones((3, 3)) # Shape (3, 3)
+linha = np.array([1, 2, 3]) # Shape (3,) -> tratado como (1, 3)
+resultado = matriz + linha # Shape final (3, 3)
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item NumPy é o alicerce numérico de todo o ecossistema científico (Pandas, SciPy, Scikit-Learn, PyTorch).
+    \item Vetorização e broadcasting viabilizam simulações em larga escala.
+    \item \textbf{Prática}: Criação de arrays, benchmarking com \texttt{\%timeit} e normalização de dados.
+  \end{itemize}
+\end{frame}
+
+\end{document}

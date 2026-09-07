@@ -1,0 +1,84 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 07 - Funções e Controle]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 07: Controle de Fluxo, Funções Modulares e Boas Práticas}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Controle de Fluxo Idiomático}
+
+\begin{frame}[fragile]{Laços Elegantes com \texttt{zip} e \texttt{enumerate}}
+  Evite acessar elementos via índice manual \texttt{lista[i]}:
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Iteração Paralela com \texttt{zip}}
+      \begin{lstlisting}
+nomes = ['Ana', 'Beto']
+notas = [9.5, 8.0]
+for n, nota in zip(nomes, notas):
+    print(f"{n}: {nota}")
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Contador com \texttt{enumerate}}
+      \begin{lstlisting}
+for idx, nome in enumerate(nomes, start=1):
+    print(f"#{idx} - {nome}")
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Desenvolvimento de Funções Modulares}
+
+\begin{frame}[fragile]{Anatomia de uma Função em Ciência de Dados}
+  \begin{lstlisting}
+def calcula_estatisticas(amostras: list[float], ddof: int = 1) -> dict[str, float]:
+    """
+    Calcula a média e o desvio padrão de uma amostra numérica.
+    
+    Parâmetros:
+        amostras: Lista de observações numéricas.
+        ddof: Graus de liberdade (padrão amostral = 1).
+    """
+    n = len(amostras)
+    media = sum(amostras) / n
+    var = sum((x - media)**2 for x in amostras) / (n - ddof)
+    return {'media': media, 'desvio_padrao': var**0.5}
+  \end{lstlisting}
+\end{frame}
+
+\section{Tratamento de Exceções}
+
+\begin{frame}[fragile]{Robustez com \texttt{try / except}}
+  Pipelines analíticos processam dados reais que frequentemente contêm valores corrompidos:
+  \begin{lstlisting}
+valores_brutos = ['10.5', '20.3', 'ausente', '45.1', 'N/A']
+valores_limpos = []
+for v in valores_brutos:
+    try:
+        valores_limpos.append(float(v))
+    except ValueError:
+        pass # Ignora ou registra em log de auditoria
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Funções puras e modulares transformam scripts soltos em pipelines reutilizáveis.
+    \item Docstrings e validações evitam propagação silenciosa de erros de cálculo.
+    \item \textbf{Prática}: Construção de funções estatísticas e tratamento defensivo de dados.
+  \end{itemize}
+\end{frame}
+
+\end{document}

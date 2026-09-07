@@ -1,0 +1,80 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 12 - Matplotlib]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 12: Visualização de Dados com Matplotlib: Interface Orientada a Objetos}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Princípios da Comunicação Visual de Dados}
+
+\begin{frame}{A Arte e Ciência dos Gráficos Eficazes}
+  Segundo Edward Tufte (\textit{The Visual Display of Quantitative Information}):
+  \begin{itemize}
+    \item \textbf{Data-Ink Ratio}: Maximize a tinta dedicada aos dados reais; minimize ruído ornamental inútil (\textit{chartjunk}).
+    \item \textbf{Integridade Gráfica}: O tamanho visual do efeito exibido na figura deve ser estritamente proporcional ao efeito numérico real dos dados.
+    \item \textbf{Contexto e Clareza}: Eixos sempre rotulados com unidades de medida e títulos explicativos.
+  \end{itemize}
+\end{frame}
+
+\section{A Arquitetura do Matplotlib}
+
+\begin{frame}{Anatomia de uma Figura}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Hierarquia de Objetos}
+        \begin{itemize}
+          \item \textbf{Figure}: O canvas total ou janela que contém um ou mais subplots.
+          \item \textbf{Axes}: A área de plotagem propriamente dita (onde ficam os dados, eixos e curvas).
+          \item \textbf{Axis}: A escala numérica do eixo X ou Y com seus \textit{ticks} e rótulos.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{alertblock}{Evite \texttt{plt.plot()} solto}
+        A interface Orientada a Objetos com \texttt{fig, ax = plt.subplots()} é muito mais explícita, robusta e modular para figuras complexas de múltiplos painéis.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Construção Prática e Exportação}
+
+\begin{frame}[fragile]{Estrutura Canônica no Matplotlib}
+  \begin{lstlisting}
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(8, 4.5), dpi=150)
+
+# Plotagem
+ax.scatter(df['horsepower'], df['price'], alpha=0.7, color='#1B4973')
+
+# Customizacao explicita
+ax.set_title("Potência vs. Preço de Automóveis", fontsize=14, pad=10)
+ax.set_xlabel("Potência (HP)")
+ax.set_ylabel("Preço (USD)")
+ax.grid(True, linestyle='--', alpha=0.5)
+
+# Exportacao de alta qualidade para publicacao
+fig.savefig("grafico_final.pdf", bbox_inches='tight')
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Visualização não é cosmética; é ferramenta de descoberta de padrões, tendências e outliers.
+    \item A abordagem OO (\texttt{fig, ax}) dá controle total sobre cada elemento gráfico.
+    \item \textbf{Prática}: Scatter plots, barras, formatação visual avançada e exportação vetorial.
+  \end{itemize}
+\end{frame}
+
+\end{document}

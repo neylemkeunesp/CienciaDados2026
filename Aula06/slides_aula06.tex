@@ -1,0 +1,80 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 06 - Estruturas de Dados]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 06: Estruturas de Dados Fundamentais e Comprehensions}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{As Quatro Estruturas Nativas}
+
+\begin{frame}{Visão Geral das Coleções em Python}
+  \begin{table}[]
+    \centering
+    \begin{tabular}{@{}llll@{}}
+      \toprule
+      \textbf{Estrutura} & \textbf{Sintaxe} & \textbf{Mutabilidade} & \textbf{Propriedade Chave} \\ \midrule
+      \textbf{List} & \texttt{[1, 2, 3]} & Mutável & Ordenada, permite duplicatas \\
+      \textbf{Tuple} & \texttt{(1, 2, 3)} & Imutável & Registros fixos e chaves de dict \\
+      \textbf{Set} & \texttt{\{1, 2, 3\}} & Mutável & Elementos únicos, busca $O(1)$ \\
+      \textbf{Dict} & \texttt{\{'a': 1\}} & Mutável & Pares chave-valor, chaves únicas \\ \bottomrule
+    \end{tabular}
+  \end{table}
+  \begin{block}{Noção de Complexidade (Big-O)}
+    Verificar se um item está em uma lista de 10 milhões de elementos leva tempo proporcional a 10 milhões ($O(n)$). Em um \texttt{set} ou \texttt{dict}, a resposta é praticamente instantânea ($O(1)$) devido a tabelas de dispersão (\textit{hash tables}).
+  \end{block}
+\end{frame}
+
+\section{List e Dict Comprehensions}
+
+\begin{frame}[fragile]{Transformações Concisas e Eficientes}
+  Comprehensions eliminam a necessidade de inicializar listas vazias e preenchê-las com laços manuais:
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{List Comprehension}
+      \begin{lstlisting}
+# Sintaxe: [expr for item in colecao if cond]
+pares = [x**2 for x in range(10) if x % 2 == 0]
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \textbf{Dict Comprehension}
+      \begin{lstlisting}
+# Sintaxe: {k: v for item in colecao}
+tamanhos = {p: len(p) for p in ['dado', 'unesp']}
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Aplicações Analíticas: Contagem e Frequência}
+
+\begin{frame}[fragile]{Agregação por Dicionário}
+  O padrão fundamental de contagem de categorias:
+  \begin{lstlisting}
+amostras = ['A', 'B', 'A', 'O', 'A', 'B', 'AB']
+frequencias = {}
+for tipo in amostras:
+    frequencias[tipo] = frequencias.get(tipo, 0) + 1
+# frequencias: {'A': 3, 'B': 2, 'O': 1, 'AB': 1}
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Escolher a estrutura correta evita lentidão e consumo excessivo de memória.
+    \item Conjuntos (\texttt{set}) resolvem problemas de deduplicação e pertinência.
+    \item \textbf{Prática}: Agrupamentos, filtragens com comprehensions e operações entre conjuntos.
+  \end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,75 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 13 - Seaborn Estatístico]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 13: Visualização de Dados II: Análise Estatística com Seaborn}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Filosofia do Seaborn}
+
+\begin{frame}{Visualização Estatística de Alto Nível}
+  Construído sobre o Matplotlib com integração nativa às estruturas do Pandas:
+  \begin{itemize}
+    \item \textbf{Mapeamento Semântico}: Mapeia colunas do DataFrame diretamente para atributos visuais (cor com \texttt{hue}, tamanho com \texttt{size}, formato com \texttt{style}).
+    \item \textbf{Estatística Embutida}: Estima automaticamente intervalos de confiança, ajusta distribuições e calcula agregações.
+    \item \textbf{Temas Elegantes}: Paletas cromáticas perceptualmente uniformes e legíveis.
+  \end{itemize}
+\end{frame}
+
+\section{Distribuições: Histogramas, KDE e Boxplots}
+
+\begin{frame}[fragile]{Análise Univariada e Detecção de Outliers}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Histograma e KDE}
+        Permite enxergar bimodalidades, assimetrias (skewness) e caudas pesadas:
+      \end{block}
+      \begin{lstlisting}
+sns.histplot(df['price'], kde=True)
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Boxplot / Violin Plot}
+        Exibe a mediana, intervalo interquartil (IQR) e identifica outliers:
+      \end{block}
+      \begin{lstlisting}
+sns.boxplot(x='body-style', y='price', data=df)
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Relações Multivariadas e Mapas de Calor}
+
+\begin{frame}[fragile]{Matrizes de Correlação e Heatmaps}
+  Visualizando o grau de associação linear entre múltiplos atributos quantitativos simultaneamente:
+  \begin{lstlisting}
+corr = df[['price', 'horsepower', 'city-mpg', 'engine-size']].corr()
+
+sns.heatmap(corr, annot=True, cmap='coolwarm', fmt='.2f', vmin=-1, vmax=1)
+  \end{lstlisting}
+  \begin{block}{Interpretação Exploratória}
+    - Correlação positiva forte ($\approx +0.8$): à medida que a potência cresce, o preço também sobe. \\
+    - Correlação negativa forte ($\approx -0.7$): veículos mais pesados e potentes consomem mais combustível (menor MPG).
+  \end{block}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Seaborn reduz dezenas de linhas de código Matplotlib a chamadas semânticas expressivas.
+    \item Boxplots e heatmaps são ferramentas indispensáveis de triagem exploratória.
+    \item \textbf{Prática}: Distribuições estatísticas, cruzamentos multivariados e matrizes de correlação.
+  \end{itemize}
+\end{frame}
+
+\end{document}

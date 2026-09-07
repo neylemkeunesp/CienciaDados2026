@@ -1,0 +1,89 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 03 - Paradigmas e Tipos]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 03: Paradigmas de Programação e Sistemas de Tipagem}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{O que é um Paradigma de Programação?}
+
+\begin{frame}{Classificação dos Paradigmas}
+  Um paradigma representa uma forma fundamental de estruturar o raciocínio computacional:
+  \begin{itemize}
+    \item \textbf{Imperativo / Procedural}: Foco no \textit{como fazer} (passo a passo de instruções e alteração de estado na memória). Ex: C, Fortran, Pascal.
+    \item \textbf{Funcional}: Foco no \textit{o que calcular} (composição de funções puras, ausência de efeitos colaterais e dados imutáveis). Ex: Haskell, Lisp, Elixir.
+    \item \textbf{Orientado a Objetos (OOP)}: Agrupamento de dados (atributos) e comportamentos (métodos) em entidades coesas (classes e objetos). Ex: Java, C++, Smalltalk.
+  \end{itemize}
+  \begin{block}{Python é Multiparadigma}
+    Python adota pragmatismo: permite combinar o melhor de cada paradigma conforme a necessidade da análise de dados!
+  \end{block}
+\end{frame}
+
+\section{Sistema de Tipagem em Python}
+
+\begin{frame}{Dinâmica, Forte e Type Hints}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Tipagem Dinâmica}
+        O tipo da variável é inferido em tempo de execução. Uma mesma variável pode referenciar diferentes tipos.
+      \end{block}
+      \begin{block}{Tipagem Forte}
+        Python não realiza coerção implícita de tipos incompatíveis (ex: \texttt{'10' + 5} resulta em \texttt{TypeError}).
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Type Hints (PEP 484 até 2026)}
+        Anotações explícitas de tipo aumentam a legibilidade e evitam bugs em pipelines complexos de dados.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Exemplo Comparativo: Imperativo vs. Funcional}
+
+\begin{frame}[fragile]{Soma dos Quadrados dos Pares}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \textbf{Estilo Imperativo (Loops e Mutação)}
+      \begin{lstlisting}
+soma = 0
+for x in range(1, 11):
+    if x % 2 == 0:
+        soma += x ** 2
+print(soma)
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Estilo Funcional (Composição)}
+      \begin{lstlisting}
+pares = filter(lambda x: x % 2 == 0, range(1, 11))
+quadrados = map(lambda x: x ** 2, pares)
+soma = sum(quadrados)
+print(soma)
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+  \begin{exampleblock}{Na Prática de Dados}
+    Pandas e PySpark utilizam princípios funcionais intensamente (transformações encadeadas sem alteração dos dados originais).
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Paradigmas moldam como expressamos transformações de dados.
+    \item Tipagem forte garante integridade e type hints documentam expectativas.
+    \item \textbf{Prática}: Expressões lógicas, casting explícito e funções lambda.
+  \end{itemize}
+\end{frame}
+
+\end{document}

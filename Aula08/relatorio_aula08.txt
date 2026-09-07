@@ -1,0 +1,3 @@
+Relatório de Processamento - Aula 08
+Quantidade de elementos: 3
+Média: 18077.33

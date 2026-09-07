@@ -1,0 +1,71 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 08 - I/O de Arquivos]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 08: Entrada/Saída de Arquivos e Leitura de Dados Compactados}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Gerenciadores de Contexto}
+
+\begin{frame}[fragile]{Manipulação Segura com \texttt{with open}}
+  Nunca abra arquivos sem o gerenciador de contexto:
+  \begin{lstlisting}
+# Modo seguro: garante o fechamento do arquivo mesmo se ocorrer um erro
+with open('dados.txt', 'r', encoding='utf-8') as f:
+    for linha in f:
+        print(linha.strip())
+  \end{lstlisting}
+  \begin{block}{Por que especificar \texttt{encoding='utf-8'}?}
+    Sistemas operacionais diferentes adotam codificações distintas por padrão (Windows costumava adotar cp1252; Linux adota UTF-8). Definir UTF-8 explicitamente garante portabilidade.
+  \end{block}
+\end{frame}
+
+\section{Formatos de Dados: Texto, CSV e Compactação}
+
+\begin{frame}[fragile]{Lendo Arquivos Compactados sem Descompactar no Disco}
+  Muitas séries temporais e dados genômicos são armazenados em formato comprimido (\texttt{.gz}) para economizar espaço de armazenamento:
+  \begin{lstlisting}
+import gzip
+
+with gzip.open('arq_abril_outono.txt.gz', 'rt', encoding='utf-8') as f:
+    primeira_linha = f.readline()
+    print(primeira_linha)
+  \end{lstlisting}
+  \begin{exampleblock}{Vantagem em Ciência de Dados}
+    A descompressão ocorre em tempo real diretamente na memória durante a leitura de streaming, economizando dezenas de gigabytes de espaço em disco.
+  \end{exampleblock}
+\end{frame}
+
+\section{O Módulo Nativo \texttt{csv}}
+
+\begin{frame}[fragile]{Leitura Estruturada com \texttt{csv.reader} e \texttt{DictReader}}
+  \begin{lstlisting}
+import csv
+
+with open('matriznum.csv', 'r', encoding='utf-8') as f:
+    leitor = csv.reader(f)
+    for linha in leitor:
+        # linha e uma lista de strings: ['1.5', '2.3', '4.1']
+        valores = [float(x) for x in linha if x]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item Gerenciadores de contexto evitam vazamentos de descritores de arquivo no sistema operacional.
+    \item Arquivos compactados podem ser lidos diretamente sem extração prévia.
+    \item \textbf{Prática}: Leitura e sumarização de arquivos de texto, CSVs e dados compactados com gzip.
+  \end{itemize}
+\end{frame}
+
+\end{document}

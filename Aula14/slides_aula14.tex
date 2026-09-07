@@ -1,0 +1,81 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 14 - Machine Learning Intro]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 14: Introdução ao Aprendizado de Máquina com Scikit-Learn}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Da Análise Exploratória à Modelagem}
+
+\begin{frame}{O Continuum da Ciência de Dados}
+  A Análise Exploratória de Dados (EDA) e o Aprendizado de Máquina (ML) são etapas complementares:
+  \begin{itemize}
+    \item A EDA descobre relações, trata anomalias e orienta a escolha de atributos (\textit{feature selection}).
+    \item O Aprendizado de Máquina quantifica e generaliza esses padrões para fazer predições ou segmentações sobre novos dados.
+  \end{itemize}
+  \begin{block}{Taxonomia Básica de Aprendizado}
+    \begin{itemize}
+      \item \textbf{Supervisionado}: Os dados possuem rótulos históricos ($y$). Exemplos: Regressão (alvo contínuo) e Classificação (alvo discreto/categórico).
+      \item \textbf{Não-Supervisionado}: Não há rótulo prévio. O algoritmo agrupa observações por similaridade inerente (ex: Clusterização com K-Means).
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{A API do Scikit-Learn}
+
+\begin{frame}[fragile]{O Padrão \texttt{fit} e \texttt{predict}}
+  O Scikit-Learn padronizou o ecossistema com uma interface universal:
+  \begin{lstlisting}
+from sklearn.linear_model import LinearRegression
+
+# 1. Instanciar o estimador com hiperparametros
+modelo = LinearRegression()
+
+# 2. Treinar/ajustar aos dados com .fit(X, y)
+# X DEVE ser uma matriz 2D (n_amostras, n_features)
+# y DEVE ser um vetor 1D (n_amostras,)
+modelo.fit(X, y)
+
+# 3. Gerar predicoes com .predict(novos_X)
+predicoes = modelo.predict(novos_dados)
+  \end{lstlisting}
+\end{frame}
+
+\section{Regressão Linear e Clusterização K-Means}
+
+\begin{frame}{Dois Métodos Fundamentais}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Regressão Linear}
+        Modela a relação entre variável preditora $X$ e desfecho $y$:
+        $$\hat{y} = \beta_0 + \beta_1 X_1 + \dots + \beta_p X_p$$
+        Métricas: Coeficiente de determinação ($R^2$) e Erro Quadrático Médio (RMSE).
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Clusterização K-Means}
+        Particiona $n$ observações em $k$ clusters, minimizando a distância euclidiana de cada ponto ao centroide mais próximo:
+        $$J = \sum_{j=1}^{k} \sum_{i \in S_j} ||x_i - \mu_j||^2$$
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Conclusão do Curso}
+  \begin{itemize}
+    \item Ao longo dessas 14 aulas, você construiu uma base sólida: da linha de comando Unix, manipulação com Pandas/NumPy, visualização avançada até a modelagem preditiva com Scikit-Learn.
+    \item O pensamento computacional e analítico permite transformar dados brutos em decisões científicas e clínicas de impacto!
+  \end{itemize}
+\end{frame}
+
+\end{document}

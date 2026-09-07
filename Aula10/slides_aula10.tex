@@ -1,0 +1,79 @@
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 10 - Pandas II: ETL]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 10: Pandas II: Pipeline de Limpeza, Agregação (GroupBy) e Junções (Merge)}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Tratamento de Dados Ausentes}
+
+\begin{frame}[fragile]{Estratégias para Missing Data}
+  No mundo real, dados faltantes são a regra, não a exceção:
+  \begin{itemize}
+    \item \textbf{Identificação}: \texttt{df.isna().sum()} reporta o total de nulos por coluna.
+    \item \textbf{Descarte}: \texttt{df.dropna(subset=['coluna'])} remove observações incompletas.
+    \item \textbf{Imputação}: \texttt{df['coluna'].fillna(valor)} preenche ausências com média, mediana ou constante.
+  \end{itemize}
+  \begin{lstlisting}
+# Imputando pela mediana (robusta a outliers)
+mediana = df['pressao'].median()
+df['pressao'] = df['pressao'].fillna(mediana)
+  \end{lstlisting}
+\end{frame}
+
+\section{O Paradigma Split-Apply-Combine}
+
+\begin{frame}[fragile]{Agregações Poderosas com \texttt{groupby}}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item \textbf{Split}: Divide os dados em grupos com base em critérios.
+        \item \textbf{Apply}: Aplica uma função de cálculo a cada grupo isoladamente.
+        \item \textbf{Combine}: Reúne os resultados em uma única tabela sumária.
+      \end{enumerate}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{lstlisting}
+# Agregacoes multiplas com .agg()
+resumo = df.groupby('setor').agg(
+    media_temp=('temperatura', 'mean'),
+    desvio_temp=('temperatura', 'std'),
+    total_pacientes=('id', 'count')
+)
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Junção de Tabelas (Joins)}
+
+\begin{frame}[fragile]{Relacionando Bases com \texttt{pd.merge}}
+  Semelhante ao comando \texttt{JOIN} do SQL:
+  \begin{itemize}
+    \item \textbf{Inner Join} (padrão): Retorna apenas registros presentes em ambas as tabelas.
+    \item \textbf{Left Join}: Mantém todas as linhas da tabela da esquerda e anexa atributos da direita.
+  \end{itemize}
+  \begin{lstlisting}
+df_final = pd.merge(df_pacientes, df_medicos, on='id_setor', how='left')
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item O pré-processamento de dados (ETL) viabiliza modelos e estatísticas confiáveis.
+    \item \texttt{groupby} e \texttt{merge} são as operações de maior retorno analítico no Pandas.
+    \item \textbf{Prática}: Imputação de dados faltantes, agregações segmentadas e junções de tabelas.
+  \end{itemize}
+\end{frame}
+
+\end{document}
