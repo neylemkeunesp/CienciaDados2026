@@ -45,11 +45,14 @@
 % Cabeçalho do frame
 \setbeamertemplate{frametitle}{%
   \nointerlineskip%
-  \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.4ex,leftskip=1.2cm]{frametitle}
-    \strut\textbf{\insertframetitle}\strut
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=1.2cm,rightskip=1.2cm]{frametitle}
+    \vskip0.9ex%
+    {\usebeamerfont{frametitle}\textbf{\insertframetitle}\strut}%
     \ifx\insertframesubtitle\@empty\else%
-      {\small\normalfont\space\textbar\space\textit{\insertframesubtitle}}%
+      \par\vskip0.2ex%
+      {\footnotesize\normalfont\color{cdBgLight}\textit{\insertframesubtitle}\strut}%
     \fi%
+    \vskip0.9ex%
   \end{beamercolorbox}%
 }
 
