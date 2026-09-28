@@ -1,0 +1,345 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 02 - Linguagens e Paradigmas]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 02: Linguagens e Paradigmas de Programação}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+% Rodapé com margem inferior ampliada para projeção.
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.5ex,leftskip=1cm,rightskip=1cm]{palette secondary}
+    \footnotesize
+    \textbf{Ciência dos Dados (2026)} \hfill Aula 02 - Linguagens e Paradigmas \hfill \insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}%
+}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Percurso da aula}
+  \tableofcontents
+\end{frame}
+
+\section{Linguagens de programação}
+
+\begin{frame}{Linguagem, paradigma e ferramenta}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Linguagem}
+        Sistema de regras para expressar computações: sintaxe, semântica e formas de representar valores e operações.
+      \end{block}
+      \begin{block}{Paradigma}
+        Uma maneira de organizar o raciocínio e estruturar a solução de um problema.
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Implementação}
+        Compilador, interpretador, máquina virtual e JIT participam da tradução e execução do programa.
+      \end{exampleblock}
+      \begin{alertblock}{Ferramenta}
+        Jupyter, editor, biblioteca e ambiente de desenvolvimento auxiliam a escrever, executar ou analisar programas; não são paradigmas.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+  \vspace{0.4em}
+  \centering\textbf{Exemplo: Python é uma linguagem; Jupyter é um ambiente de trabalho.}
+\end{frame}
+
+\begin{frame}{Um panorama de linguagens}
+  \small
+  \begin{tabular}{p{0.32\textwidth}p{0.58\textwidth}}
+    \toprule
+    \textbf{Exemplos} & \textbf{Contextos frequentes (não exclusivos)} \\
+    \midrule
+    C, Fortran & Sistemas e aplicações científicas de alto desempenho. \\
+    \addlinespace[0.15em]
+    Lisp & Programação simbólica, linguagens funcionais e ambientes interativos. \\
+    \addlinespace[0.15em]
+    Python, Perl, Ruby, Lua & Automação, scripts e aplicações de propósito geral. \\
+    \addlinespace[0.15em]
+    R, MATLAB, \mbox{Mathematica}, Julia & Estatística, matemática, engenharia e computação científica. \\
+    \addlinespace[0.15em]
+    \shortstack[l]{Java, JavaScript,\\ Scala, Clojure, Go} & Aplicações, serviços, web e sistemas de diferentes escalas. \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.7em}
+  \begin{alertblock}{Como ler esta tabela}
+    A associação indica usos comuns, não uma restrição. Linguagens evoluem, compartilham recursos e podem atender a vários domínios.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}{C e Fortran: controle e computação científica}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{C}
+        \begin{itemize}
+          \item Linguagem de propósito geral com controle explícito de recursos.
+          \item Presente em sistemas, bibliotecas e código de alto desempenho.
+          \item Exige atenção a detalhes de implementação e gerenciamento de memória.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Fortran}
+        \begin{itemize}
+          \item Desenvolvida com forte relação com o cálculo numérico e científico.
+          \item Ecossistema maduro para aplicações científicas e computação de alto desempenho.
+          \item A linguagem evoluiu; não se limita ao estilo de seus primeiros programas.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \vspace{0.3em}
+  \centering\small Desempenho depende também de algoritmos, compiladores, bibliotecas e hardware — não apenas da linguagem.
+\end{frame}
+
+\begin{frame}{Lisp e linguagens científicas}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Lisp}
+        \begin{itemize}
+          \item Associada à computação simbólica e à programação funcional.
+          \item O ciclo interativo REPL (ler, avaliar e imprimir resultados) favorece experimentação.
+          \item Estruturas de dados e código podem ser manipulados de formas expressivas.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{R, MATLAB, Mathematica e Julia}
+        \begin{itemize}
+          \item Ambientes e ecossistemas voltados a tarefas numéricas ou científicas.
+          \item R é amplamente usado em estatística; MATLAB em computação numérica e engenharia; Mathematica em matemática simbólica; Julia em computação científica.
+          \item A escolha depende de bibliotecas, licença, equipe e requisitos do projeto.
+        \end{itemize}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Java, JavaScript, Python e outras linguagens}
+  \begin{itemize}
+    \item \textbf{Java}: linguagem de propósito geral, fortemente associada ao desenvolvimento baseado em classes e à máquina virtual Java.
+    \item \textbf{JavaScript}: linguagem distinta de Java, usada em navegadores e também em outros ambientes de execução.
+    \item \textbf{Python}: linguagem de propósito geral, com ecossistema amplo e suporte a vários paradigmas; muito usada em análise de dados.
+    \item \textbf{Perl, Ruby, Lua, Scala, Clojure e Go}: exemplos de linguagens com diferentes escolhas de sintaxe, execução, tipos e ecossistemas.
+  \end{itemize}
+  \begin{alertblock}{Evite rótulos simplificadores}
+    “Linguagem de script”, “compilada” ou “orientada a objetos” não resume por completo uma linguagem moderna nem todos os seus usos.
+  \end{alertblock}
+\end{frame}
+
+\section{Paradigmas de programação}
+
+\begin{frame}{Programação estruturada / imperativa}
+  \begin{block}{Ideia central}
+    Expressar a solução como instruções e etapas explícitas, organizadas por estruturas de controle.
+  \end{block}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.32\textwidth}
+      \begin{exampleblock}{Sequência}
+        Executar instruções em uma ordem definida.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{exampleblock}{Seleção}
+        Escolher caminhos com condicionais.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \begin{exampleblock}{Repetição}
+        Repetir operações com laços.
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \begin{itemize}
+    \item Funções e sub-rotinas ajudam a modularizar e reduzir duplicação.
+    \item Vetores, matrizes, registros e outras estruturas organizam os dados.
+    \item O estado mutável pode tornar o fluxo difícil de acompanhar se não for controlado.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Orientação a objetos}
+  \begin{block}{Ideia central}
+    Organizar parte do sistema em objetos que reúnem estado e comportamento.
+  \end{block}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{itemize}
+        \item \textbf{Atributos}: dados associados a um objeto.
+        \item \textbf{Métodos}: operações relacionadas ao objeto.
+        \item \textbf{Classes}: estruturas para definir objetos e seus comportamentos.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Quando pode ajudar?}
+        Sistemas com entidades, responsabilidades e interações que precisam ser organizadas e mantidas ao longo do tempo.
+      \end{exampleblock}
+      \begin{alertblock}{Cuidado}
+        Classes e hierarquias podem acrescentar complexidade sem benefício; herança não é a única forma de reutilização.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Programação funcional}
+  \begin{block}{Ideia central}
+    Expressar computações como composição de funções e transformações de valores.
+  \end{block}
+  \begin{itemize}
+    \item \textbf{Função pura}: para a mesma entrada, produz o mesmo resultado e não altera estado externo.
+    \item \textbf{Imutabilidade}: em vez de modificar um dado compartilhado, produz-se um novo valor.
+    \item \textbf{Composição}: funções menores são conectadas para formar uma transformação maior.
+    \item \texttt{map} transforma cada elemento; operações de redução agregam vários valores em um resultado.
+  \end{itemize}
+  \begin{exampleblock}{Onde aparece?}
+    Haskell e Lisp são exemplos associados ao estilo funcional; Python, R e outras linguagens também oferecem recursos funcionais.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Declarativo, dirigido por eventos e reativo}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Declarativo}
+        Descrever o resultado, as relações ou as restrições, sem definir todo o algoritmo.\par\small Exemplos: SQL e Prolog.
+      \end{block}
+      \begin{exampleblock}{Vantagem e limite}
+        Abstrai detalhes, mas parte do controle de execução fica a cargo do sistema ou do domínio.
+      \end{exampleblock}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Dirigido por eventos}
+        Responde a eventos, como ações de usuário, mensagens ou mudanças de estado.
+      \end{block}
+      \begin{exampleblock}{Reativo}
+        Propaga mudanças e responde a fluxos de dados ou eventos ao longo do tempo.
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \vspace{0.5em}
+  \centering\small Esses estilos podem coexistir com abordagens imperativas, funcionais e orientadas a objetos.
+\end{frame}
+
+\begin{frame}[fragile]{Uma tarefa, três formas de expressar a solução}
+  \small Tarefa: selecionar países com mais de 200 registros e obter seus nomes.
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      \begin{block}{Estruturada / imperativa}
+\begin{lstlisting}
+selecionar = lista_vazia
+para registro em tabela:
+    se registro.quantidade > 200:
+        adicionar registro.pais
+\end{lstlisting}
+      \end{block}
+    \end{column}
+    \begin{column}{0.49\textwidth}
+      \begin{exampleblock}{Funcional}
+\begin{lstlisting}
+tabela
+  -> filtrar quantidade > 200
+  -> extrair pais
+\end{lstlisting}
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \begin{block}{Declarativa (SQL)}
+\begin{lstlisting}
+SELECT pais FROM catalogo WHERE quantidade > 200;
+\end{lstlisting}
+  \end{block}
+  \small Perguntas: qual expressa os passos? Qual descreve diretamente a condição? O que precisa ser igual para todas as respostas?
+\end{frame}
+
+\begin{frame}{Python: uma linguagem multiparadigma}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Pode combinar estilos}
+        \begin{itemize}
+          \item imperativo e estruturado;
+          \item orientação a objetos;
+          \item composição funcional;
+          \item bibliotecas com outras abstrações.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{A escolha é contextual}
+        Um mesmo projeto pode usar classes para organizar componentes, funções para transformar dados e instruções imperativas para coordenar etapas.
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \begin{alertblock}{Não existe “o paradigma correto” em abstrato}
+    Compare legibilidade, estado, testes, manutenção, desempenho e familiaridade da equipe.
+  \end{alertblock}
+\end{frame}
+
+\section{Escolha e organização do desenvolvimento}
+
+\begin{frame}{Qual linguagem é a melhor?}
+  \begin{block}{A pergunta mais útil}
+    Qual linguagem, paradigma e ecossistema atendem melhor a este problema, sob estas restrições?
+  \end{block}
+  \begin{itemize}
+    \item Que bibliotecas e ferramentas a tarefa exige?
+    \item Que desempenho e recursos de hardware são necessários?
+    \item Quem manterá o software e qual experiência essa equipe possui?
+    \item Há requisitos de interoperabilidade, licença ou implantação?
+    \item O código precisa ser exploratório, reutilizável, distribuído ou de longa duração?
+  \end{itemize}
+  \centering\textbf{Toda escolha envolve compromissos; nenhuma linguagem é universalmente melhor.}
+\end{frame}
+
+\begin{frame}{Catedral e Bazar: outra dimensão}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Catedral}
+        Metáfora para desenvolvimento mais centralizado e planejado, com coordenação concentrada e entregas mais controladas.
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{exampleblock}{Bazar}
+        Metáfora para desenvolvimento aberto e distribuído, com contribuições, discussão e revisão da comunidade.
+      \end{exampleblock}
+    \end{column}
+  \end{columns}
+  \begin{alertblock}{Não confundir}
+    Catedral/Bazar descrevem modelos de organização do desenvolvimento, não paradigmas de programação. Um projeto de qualquer modelo pode combinar vários estilos de código.
+  \end{alertblock}
+  \footnotesize Inspirado no ensaio de Eric S. Raymond, \textit{The Cathedral and the Bazaar} (1999).
+\end{frame}
+
+\begin{frame}{Atividade: escolha, investigue e justifique}
+  \begin{enumerate}
+    \item Escolha um cenário: análise de dados em notebook, consulta a banco, cálculo numérico ou sistema mantido por uma equipe.
+    \item Em dupla, formulem um prompt próprio para investigar linguagens, paradigmas ou ecossistemas relevantes ao cenário.
+    \item Consultem as fontes no NotebookLM e verifiquem as referências no material.
+    \item Registrem o prompt inicial, eventual reformulação, evidência consultada e conclusão.
+    \item Justifiquem uma escolha e indiquem pelo menos um limite ou custo.
+  \end{enumerate}
+  \begin{exampleblock}{Entrega}
+    Cenário + escolha + critérios + limitação + fonte conferida.
+  \end{exampleblock}
+\end{frame}
+
+\section{Síntese}
+
+\begin{frame}{Síntese e referências}
+  \begin{itemize}
+    \item Linguagem, paradigma, ferramenta e estratégia de execução são conceitos distintos.
+    \item Estruturada, orientada a objetos, funcional e declarativa são abordagens que ajudam a organizar soluções.
+    \item Linguagens podem combinar paradigmas; usos comuns não são fronteiras rígidas.
+    \item A escolha depende de requisitos, ecossistema, equipe e manutenção.
+    \item Catedral/Bazar descrevem organização do desenvolvimento, não estrutura do código.
+  \end{itemize}
+  \vspace{0.3em}
+  \footnotesize
+  \textbf{Material de base:} CienciadosDados2024, `Aula03/Paradigmas.ipynb`, `.Paradigmas.ipynb.sage-jupyter2`, `.Linguagens de Programação.ipynb.sage-jupyter2` e `Aula04/Linguagens de Programação.ipynb`.\\
+  Sebesta, R. W. \textit{Concepts of Programming Languages}, 12th ed., Pearson, 2019.\\
+  Python Software Foundation. \textit{Functional Programming HOWTO}.\\
+  Raymond, E. S. \textit{The Cathedral and the Bazaar}, 1999.
+\end{frame}
+
+\end{document}

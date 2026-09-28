@@ -1,0 +1,964 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Prévia dos notebooks Jupyter</title>
+<style>
+:root{--bg:#111827;--panel:#172033;--line:#2c3850;--fg:#e7edf7;--muted:#9aa9bf;--accent:#7cb7ff;--code:#0b1220}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;display:grid;grid-template-columns:255px minmax(0,1fr);height:100vh;overflow:hidden}
+aside{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;min-width:0}.brand{padding:16px 14px 10px;font-weight:700;font-size:16px}#search{margin:0 10px 12px;padding:9px 10px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--fg);outline:none}nav{overflow:auto;padding:0 7px 12px}.nav-item{width:100%;text-align:left;padding:9px 8px;margin:2px 0;border:0;border-radius:6px;background:transparent;color:var(--fg);cursor:pointer}.nav-item:hover,.nav-item.active{background:#26344d}.nav-item span,.nav-item small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nav-item small{color:var(--muted);font-size:11px;margin-top:2px}main{overflow:auto;padding:24px clamp(16px,4vw,50px) 60px}.notebook{display:none;max-width:1000px;margin:0 auto}.notebook.active{display:block}header{border-bottom:1px solid var(--line);margin-bottom:22px;padding-bottom:14px}h1{font-size:25px;margin:0 0 4px}.path,.cell-label{color:var(--muted);font-size:12px}.cell{border:1px solid var(--line);border-radius:8px;margin:14px 0;padding:11px 13px;background:rgba(23,32,51,.7)}.cell-label{text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}.markdown h1,.markdown h2,.markdown h3{line-height:1.25;margin:1em 0 .5em}.markdown h1{font-size:1.55em}.markdown h2{font-size:1.3em}.markdown h3{font-size:1.1em}.markdown p{margin:.55em 0}.markdown ul,.markdown ol{padding-left:24px}.markdown a{color:var(--accent)}.markdown code{background:#26344d;padding:1px 4px;border-radius:4px}pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font:12.5px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace}pre.input{background:var(--code);padding:12px;border-radius:6px;color:#d7e5ff}.output{margin-top:9px;color:var(--muted)}.output summary{cursor:pointer}.output pre{margin-top:7px;padding:10px;background:#101827;border-radius:5px;color:#cad3e1}.markdown table{border-collapse:collapse}.markdown td,.markdown th{border:1px solid var(--line);padding:5px 8px}
+@media(max-width:650px){body{grid-template-columns:190px minmax(0,1fr)}main{padding:14px}}
+</style></head><body><aside><div class="brand">Notebooks Jupyter · prévias</div><input id="search" placeholder="Filtrar arquivos…"><nav><button class="nav-item active" data-key="nb1" title="Aula01/Aula01_Exploracao_NotebookLM.ipynb"><span>Aula01 Exploracao NotebookLM</span><small>Aula01/Aula01_Exploracao_NotebookLM.ipynb</small></button><button class="nav-item" data-key="nb2" title="Aula01/Aula01_Pratica.ipynb"><span>Aula01 Pratica</span><small>Aula01/Aula01_Pratica.ipynb</small></button><button class="nav-item" data-key="nb3" title="Aula02/Aula02_Pratica.ipynb"><span>Aula02 Pratica</span><small>Aula02/Aula02_Pratica.ipynb</small></button><button class="nav-item" data-key="nb4" title="Aula03/Aula03_Pratica.ipynb"><span>Aula03 Pratica</span><small>Aula03/Aula03_Pratica.ipynb</small></button><button class="nav-item" data-key="nb5" title="Aula04/Aula04_Pratica.ipynb"><span>Aula04 Pratica</span><small>Aula04/Aula04_Pratica.ipynb</small></button><button class="nav-item" data-key="nb6" title="Aula05/Aula05_Pratica.ipynb"><span>Aula05 Pratica</span><small>Aula05/Aula05_Pratica.ipynb</small></button><button class="nav-item" data-key="nb7" title="Aula06/Aula06_Pratica.ipynb"><span>Aula06 Pratica</span><small>Aula06/Aula06_Pratica.ipynb</small></button><button class="nav-item" data-key="nb8" title="Aula07/Aula07_Pratica.ipynb"><span>Aula07 Pratica</span><small>Aula07/Aula07_Pratica.ipynb</small></button><button class="nav-item" data-key="nb9" title="Aula08/Aula08_Pratica.ipynb"><span>Aula08 Pratica</span><small>Aula08/Aula08_Pratica.ipynb</small></button><button class="nav-item" data-key="nb10" title="Aula09/Aula09_Pratica.ipynb"><span>Aula09 Pratica</span><small>Aula09/Aula09_Pratica.ipynb</small></button><button class="nav-item" data-key="nb11" title="Aula10/Aula10_Pratica.ipynb"><span>Aula10 Pratica</span><small>Aula10/Aula10_Pratica.ipynb</small></button><button class="nav-item" data-key="nb12" title="Aula11/Aula11_Pratica.ipynb"><span>Aula11 Pratica</span><small>Aula11/Aula11_Pratica.ipynb</small></button><button class="nav-item" data-key="nb13" title="Aula12/Aula12_Pratica.ipynb"><span>Aula12 Pratica</span><small>Aula12/Aula12_Pratica.ipynb</small></button><button class="nav-item" data-key="nb14" title="Aula13/Aula13_Pratica.ipynb"><span>Aula13 Pratica</span><small>Aula13/Aula13_Pratica.ipynb</small></button><button class="nav-item" data-key="nb15" title="Aula14/Aula14_Pratica.ipynb"><span>Aula14 Pratica</span><small>Aula14/Aula14_Pratica.ipynb</small></button></nav></aside><main><section class="notebook active" id="nb1"><header><h1>Aula01 Exploracao NotebookLM</h1><p class="path">Aula01/Aula01_Exploracao_NotebookLM.ipynb · 8 células · 0 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I — Aula 01</h1>
+<h2>Roteiro prático: explorar as fontes com NotebookLM</h2>
+<p><strong>Tempo estimado:</strong> 60 minutos · <strong>Formato:</strong> individual e em duplas</p>
+<h3>Objetivos</h3>
+<ul>
+<li>Encontrar informações no material e conferir sua origem.</li>
+<li>Formular e aprimorar prompts para investigar as fontes.</li>
+<li>Organizar exemplos históricos de coleta e análise de dados.</li>
+<li>Interpretar números e reconhecer limites do que se pode concluir.</li>
+</ul></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>Como trabalhar</h2>
+<ol>
+<li>Abra o NotebookLM da aula e confirme que os slides/PDF da Aula 01 estão entre as fontes.</li>
+<li>Em cada atividade, <strong>escreva seu próprio prompt antes de consultar o NotebookLM</strong>. Não há prompts prontos neste roteiro.</li>
+<li>Registre o prompt exatamente como foi enviado. Leia a resposta e confira as referências no material.</li>
+<li>Se a resposta estiver vaga, incompleta ou sem apoio na fonte, reformule o prompt e registre a nova versão.</li>
+<li>Escreva suas respostas neste notebook, editando esta célula ou acrescentando células de texto/Markdown.</li>
+</ol>
+<h3>Verificação do prompt</h3>
+<p>Antes de enviar, confira se seu prompt deixa claro:
+- qual tarefa você quer que o NotebookLM realize;
+- quais fontes ou limites deve respeitar;
+- que tipo de resposta você espera;
+- como você poderá conferir a resposta no material.</p>
+<blockquote>
+<p>Uma resposta da IA é uma pista para consultar a fonte, não uma fonte por si só.</p>
+</blockquote></div></article><article class="cell"><div class="cell-label">markdown · célula 3</div><div class="markdown"><h2>1. Caça às evidências — 10 min</h2>
+<p>Escolha <strong>dois exemplos históricos</strong> de registro ou coleta de dados apresentados na aula. Elabore um prompt para localizar informações úteis sobre eles. Após ler a resposta, confirme cada informação na fonte; se necessário, revise seu prompt.</p>
+<p><strong>Prompt inicial (copie exatamente):</strong></p>
+<p>[Escreva aqui.]</p>
+<p><strong>O que respondeu o NotebookLM? Resuma e anote as referências indicadas.</strong></p>
+<p>[Escreva aqui.]</p>
+<p><strong>O que você conferiu diretamente nos slides/PDF?</strong></p>
+<p>[Escreva aqui.]</p>
+<p><strong>Prompt revisado (se precisou reformular) e o que melhorou:</strong></p>
+<p>[Escreva aqui.]</p>
+<table>
+<thead>
+<tr>
+<th>Exemplo</th>
+<th>O que era registrado?</th>
+<th>Para que servia?</th>
+<th>Onde confirmei no material?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2.</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div></article><article class="cell"><div class="cell-label">markdown · célula 4</div><div class="markdown"><h2>2. Linha do tempo dos dados — 12 min</h2>
+<p>Em dupla, escolham <strong>quatro momentos ou exemplos</strong> da aula — por exemplo: nilômetros, tabletes sumérios, ábaco, Tycho Brahe e Kepler, Mendel, ENIAC, Genoma Humano ou conectoma. Escrevam um prompt que ajude a organizá-los historicamente e a compará-los. Vocês decidem quais aspectos comparar.</p>
+<p><strong>Prompt elaborado pela dupla (copie exatamente):</strong></p>
+<p>[Escrevam aqui.]</p>
+<p><strong>Que resposta receberam? Quais afirmações ou datas foram verificadas diretamente na fonte?</strong></p>
+<p>[Escrevam aqui.]</p>
+<p><strong>Se a resposta não ajudou a comparação, como reformularam o prompt?</strong></p>
+<p>[Escrevam aqui.]</p>
+<table>
+<thead>
+<tr>
+<th>Ordem</th>
+<th>Exemplo e período</th>
+<th>Que dados eram registrados ou analisados?</th>
+<th>O que mudou em relação ao exemplo anterior?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (mais antigo)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4 (mais recente)</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>O que mudou entre o primeiro e o último exemplo?</strong></p>
+<p>[Escrevam uma ou duas frases.]</p></div></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>3. O catálogo de Leporello — 14 min</h2>
+<p>No material, Leporello enumera registros associados a diferentes países. Elaborem um prompt para localizar e organizar os dados do catálogo. Decidam como pedir que a resposta seja apresentada e como as referências devem aparecer. Confiram cada valor no slide antes de fazer os cálculos.</p>
+<p><strong>Prompt inicial (copie exatamente):</strong></p>
+<p>[Escreva aqui.]</p>
+<p><strong>Resposta do NotebookLM e referências indicadas:</strong></p>
+<p>[Escreva aqui ou cole a tabela gerada.]</p>
+<p><strong>Conferência na fonte:</strong> houve algum valor ausente, ambíguo ou transcrito incorretamente?</p>
+<p>[Escreva aqui.]</p>
+<table>
+<thead>
+<tr>
+<th>País</th>
+<th>Quantidade conferida na fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Itália</td>
+<td></td>
+</tr>
+<tr>
+<td>Alemanha</td>
+<td></td>
+</tr>
+<tr>
+<td>França</td>
+<td></td>
+</tr>
+<tr>
+<td>Turquia</td>
+<td></td>
+</tr>
+<tr>
+<td>Espanha</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Com uma calculadora, mostre o procedimento e responda:
+1. Qual é o total de registros?
+2. Qual país tem a maior contagem?
+3. Aproximadamente que porcentagem do total corresponde à Espanha?
+4. O que esses números não permitem concluir sobre as pessoas descritas?</p>
+<p>[Escreva suas contas e respostas aqui.]</p>
+<p><strong>Agora formule uma pergunta de acompanhamento para investigar o significado ou os limites desses números. Registre o prompt e o que aprendeu ao conferir a resposta.</strong></p>
+<p>[Escreva aqui.]</p></div></article><article class="cell"><div class="cell-label">markdown · célula 6</div><div class="markdown"><h2>4. Quando uma métrica engana? — 12 min</h2>
+<p>Use o exemplo da <strong>falácia de McNamara</strong> discutido nos slides. Elabore um prompt que ajude a examinar criticamente a métrica do caso. A resposta deve ser conferida na fonte; suas próprias interpretações devem ser identificadas como interpretações, não como citações do material.</p>
+<p><strong>Prompt inicial (copie exatamente):</strong></p>
+<p>[Escreva aqui.]</p>
+<p><strong>Resumo da resposta e referências que você verificou:</strong></p>
+<p>[Escreva aqui.]</p>
+<p>Complete com suas palavras:
+- O que a métrica capturava: <strong>[resposta]</strong>
+- O que poderia deixar de fora: <strong>[resposta]</strong>
+- Uma pergunta que deveria ser feita antes de decidir com base nela: <strong>[resposta]</strong></p>
+<p><strong>O que você mudou no prompt depois de ler a primeira resposta? Por quê?</strong></p>
+<p>[Escreva aqui.]</p></div></article><article class="cell"><div class="cell-label">markdown · célula 7</div><div class="markdown"><h2>5. O ciclo de vida dos dados — 8 min</h2>
+<p>Escolha um exemplo da aula — o catálogo de Leporello, os registros das cheias do Nilo ou um exemplo biomédico. Formule um prompt para relacionar esse exemplo às etapas do OSEMN (obter, limpar, explorar, modelar e interpretar). Diferencie o que está descrito nas fontes daquilo que vocês estão propondo como aplicação possível.</p>
+<p><strong>Prompt da dupla (copie exatamente):</strong></p>
+<p>[Escrevam aqui.]</p>
+<p><strong>Resposta resumida e referências verificadas:</strong></p>
+<p>[Escrevam aqui.]</p>
+<table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>O que poderia acontecer neste exemplo?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Obter</td>
+<td></td>
+</tr>
+<tr>
+<td>Limpar</td>
+<td></td>
+</tr>
+<tr>
+<td>Explorar</td>
+<td></td>
+</tr>
+<tr>
+<td>Modelar</td>
+<td></td>
+</tr>
+<tr>
+<td>Interpretar</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Qual etapa seria especialmente importante para evitar uma conclusão enganosa? Por quê?</strong></p>
+<p>[Escrevam uma ou duas frases.]</p></div></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h2>6. Bilhete de saída — 4 min</h2>
+<p>Responda individualmente:
+1. Uma informação que encontrei e confirmei na fonte: <strong>[resposta]</strong>
+2. Uma conclusão que os dados permitem fazer: <strong>[resposta]</strong>
+3. Uma limitação, dúvida ou informação que ainda falta: <strong>[resposta]</strong>
+4. Uma mudança que fiz em um dos meus prompts e por que ela melhorou a investigação: <strong>[resposta]</strong></p>
+<h3>Lista de conferência</h3>
+<ul>
+<li>[ ] Registrei os prompts que escrevi.</li>
+<li>[ ] Conferi na fonte pelo menos duas afirmações do NotebookLM.</li>
+<li>[ ] Separei o que a fonte diz do que eu inferi.</li>
+<li>[ ] Identifiquei uma limitação dos dados ou da resposta da IA.</li>
+</ul>
+<p><strong>Critérios de conclusão:</strong> prompts próprios e pertinentes; referências conferidas; respostas coerentes com o material; reconhecimento de limites ou incertezas.</p></div></article></section><section class="notebook" id="nb2"><header><h1>Aula01 Pratica</h1><p class="path">Aula01/Aula01_Pratica.ipynb · 14 células · 7 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 01: Primeiros Passos e Verificação do Ambiente Analítico</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula01/Aula01_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Verificar as versões das bibliotecas instaladas no ambiente (Python 3, Pandas, NumPy, etc.)</li>
+<li>Praticar operações elementares em Python e atribuição de variáveis</li>
+<li>Representar um catálogo de dados histórico (Don Giovanni / Leporello) em estruturas nativas de Python</li>
+<li>Executar agregações e contagens elementares sem o uso de bibliotecas externas</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Verificação do Ambiente de Trabalho</h2>
+<p>Nesta primeira etapa, garantimos que as ferramentas modernas de Ciência de Dados estão acessíveis e com versões atualizadas.</p></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>import sys
+import os
+
+print(f&#x27;Versão do Python: {sys.version}&#x27;)
+print(f&#x27;Diretório de trabalho atual: {os.getcwd()}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code>import numpy as np
+import pandas as pd
+import matplotlib
+
+print(f&#x27;NumPy versão: {np.__version__}&#x27;)
+print(f&#x27;Pandas versão: {pd.__version__}&#x27;)
+print(f&#x27;Matplotlib versão: {matplotlib.__version__}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>2. Modelando Dados: O Catálogo de Leporello (Don Giovanni)</h2>
+<p>Vamos modelar o catálogo de conquistas de Don Giovanni descrito por Leporello como uma lista de registros (dicionários).</p></div></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code># Dados de registro por região/país
+catalogo = [
+    {&#x27;pais&#x27;: &#x27;Itália&#x27;, &#x27;quantidade&#x27;: 640},
+    {&#x27;pais&#x27;: &#x27;Alemanha&#x27;, &#x27;quantidade&#x27;: 231},
+    {&#x27;pais&#x27;: &#x27;França&#x27;, &#x27;quantidade&#x27;: 100},
+    {&#x27;pais&#x27;: &#x27;Turquia&#x27;, &#x27;quantidade&#x27;: 91},
+    {&#x27;pais&#x27;: &#x27;Espanha&#x27;, &#x27;quantidade&#x27;: 1003}
+]
+
+print(&#x27;Catálogo de Conquistas:&#x27;)
+for reg in catalogo:
+    print(f&quot;{reg[&#x27;pais&#x27;]:&lt;10}: {reg[&#x27;quantidade&#x27;]:&gt;5}&quot;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 7</div><div class="markdown"><h2>3. Agregações e Estatísticas Básicas</h2>
+<p>Calculando o total de registros e encontrando a região com maior contagem.</p></div></article><article class="cell"><div class="cell-label">code · célula 8</div><pre class="input"><code>total = sum(reg[&#x27;quantidade&#x27;] for reg in catalogo)
+maior_reg = max(catalogo, key=lambda x: x[&#x27;quantidade&#x27;])
+
+print(f&#x27;Total acumulado: {total}&#x27;)
+print(f&quot;País com mais registros: {maior_reg[&#x27;pais&#x27;]} com {maior_reg[&#x27;quantidade&#x27;]}&quot;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 9</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 01</h2>
+<h3>Exercício 1 (Fixação)</h3>
+<p>Calcule a média de registros por país no catálogo de Leporello utilizando apenas funções embutidas de Python (<code>sum</code>, <code>len</code>).</p></div></article><article class="cell"><div class="cell-label">code · célula 10</div><pre class="input"><code># Seu código aqui
+media = total / len(catalogo)
+print(f&#x27;Média por país: {media:.2f}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 11</div><div class="markdown"><h3>Exercício 2 (Aplicação)</h3>
+<p>Crie uma lista contendo apenas os países que possuem mais de 200 registros.</p></div></article><article class="cell"><div class="cell-label">code · célula 12</div><pre class="input"><code># Seu código aqui
+paises_mais_200 = [reg[&#x27;pais&#x27;] for reg in catalogo if reg[&#x27;quantidade&#x27;] &gt; 200]
+print(f&#x27;Países com mais de 200 registros: {paises_mais_200}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 13</div><div class="markdown"><h3>Exercício 3 (Desafio)</h3>
+<p>Calcule a porcentagem que a Espanha representa sobre o total de registros do catálogo.</p></div></article><article class="cell"><div class="cell-label">code · célula 14</div><pre class="input"><code># Seu código aqui
+espanha_qtd = next(reg[&#x27;quantidade&#x27;] for reg in catalogo if reg[&#x27;pais&#x27;] == &#x27;Espanha&#x27;)
+percentual_espanha = (espanha_qtd / total) * 100
+print(f&#x27;A Espanha representa {percentual_espanha:.1f}% do catálogo.&#x27;)
+</code></pre></article></section><section class="notebook" id="nb3"><header><h1>Aula02 Pratica</h1><p class="path">Aula02/Aula02_Pratica.ipynb · 11 células · 6 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 02: O Ecossistema Jupyter, Markdown Técnico e Comandos Mágicos</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula02/Aula02_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Compreender a diferença entre modo de comando e modo de edição no Jupyter</li>
+<li>Praticar a escrita de documentação técnica com Markdown e fórmulas matemáticas em LaTeX</li>
+<li>Utilizar comandos mágicos do IPython (<code>%timeit</code>, <code>%whos</code>, <code>%pwd</code>, <code>!</code>) para inspeção do ambiente</li>
+<li>Garantir a reprodutibilidade da análise através da ordem de execução sequencial das células</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Documentação Técnica com Markdown e LaTeX</h2>
+<p>No Jupyter, podemos misturar texto formatado, listas e equações matemáticas com notação LaTeX:</p>
+<p>Equação em linha: $f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}$</p>
+<p>Equação em bloco:
+$$\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$$</p></div></article><article class="cell"><div class="cell-label">markdown · célula 3</div><div class="markdown"><h2>2. Comandos Mágicos do IPython (Magics)</h2>
+<p>Comandos que começam com <code>%</code> (linha) ou <code>%%</code> (célula) fornecem recursos especiais de medição de desempenho e controle do kernel.</p></div></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># Medição de tempo de execução com %timeit
+%timeit sum(range(100_000))
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 5</div><pre class="input"><code># Listando todas as variáveis atualmente ativas no Kernel
+x = 42
+y = &#x27;Ciência de Dados&#x27;
+z = [1, 2, 3, 4]
+
+%whos
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code># Executando comando do sistema operacional
+!python3 --version
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 7</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 02</h2>
+<h3>Exercício 1 (Markdown e LaTeX)</h3>
+<p>Crie uma célula markdown abaixo contendo:
+1. Um título de nível 2.
+2. Uma lista com três nomes de bibliotecas Python de Ciência de Dados.
+3. A fórmula do Teorema de Pitágoras em notação LaTeX inline ($a^2 + b^2 = c^2$).</p></div></article><article class="cell"><div class="cell-label">code · célula 8</div><pre class="input"><code># Espaço para anotações de código, se necessário
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 9</div><div class="markdown"><h3>Exercício 2 (Benchmarking com %timeit)</h3>
+<p>Compare o tempo de execução para criar uma lista de números ao quadrado de 0 a 10.000 usando:
+a) Loop <code>for</code> tradicional com <code>.append()</code>
+b) List Comprehension <code>[i**2 for i in range(10_000)]</code></p></div></article><article class="cell"><div class="cell-label">code · célula 10</div><pre class="input"><code># Teste A: loop tradicional
+def cria_loop():
+    l = []
+    for i in range(10_000):
+        l.append(i**2)
+    return l
+
+%timeit cria_loop()
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 11</div><pre class="input"><code># Teste B: List comprehension
+%timeit [i**2 for i in range(10_000)]
+</code></pre></article></section><section class="notebook" id="nb4"><header><h1>Aula03 Pratica</h1><p class="path">Aula03/Aula03_Pratica.ipynb · 11 células · 6 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 03: Paradigmas de Programação, Operadores e Tipagem em Python</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula03/Aula03_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Explorar os tipos primitivos fundamentais (<code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>) e conversões de tipo</li>
+<li>Utilizar operadores aritméticos, relacionais e lógicos com precisão</li>
+<li>Comparar abordagens imperativas vs funcionais (<code>map</code>, <code>filter</code>, funções puras)</li>
+<li>Aplicar Type Hints básicos do Python moderno para documentação de funções</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Tipos de Dados Primitivos e Type Casting</h2>
+<p>Python é uma linguagem dinamicamente tipada, porém fortemente tipada.</p></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>a = 10          # int
+b = 3.14159     # float
+c = &#x27;UNESP&#x27;     # str
+d = True        # bool
+
+print(type(a), type(b), type(c), type(d))
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># Conversão explícita de tipos (Casting)
+str_num = &#x27;123&#x27;
+num = int(str_num)
+float_num = float(num)
+print(f&#x27;Valor: {float_num}, Tipo: {type(float_num)}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>2. Paradigma Imperativo vs Funcional</h2>
+<p>Vamos calcular a soma dos quadrados dos números pares de 1 a 10 de duas formas.</p></div></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code># Abordagem 1: Imperativa (instruindo o passo a passo com mutação de estado)
+soma_imperativa = 0
+for x in range(1, 11):
+    if x % 2 == 0:
+        soma_imperativa += x ** 2
+
+print(f&#x27;Soma imperativa: {soma_imperativa}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code># Abordagem 2: Funcional (composição de funções puras e imutabilidade)
+pares = filter(lambda x: x % 2 == 0, range(1, 11))
+quadrados = map(lambda x: x ** 2, pares)
+soma_funcional = sum(quadrados)
+
+print(f&#x27;Soma funcional: {soma_funcional}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 03</h2>
+<h3>Exercício 1 (Operadores e Tipagem)</h3>
+<p>Escreva uma função com type hints que receba um peso em kg (float) e uma altura em metros (float), calcule o IMC e retorne o valor com duas casas decimais.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>def calcula_imc(peso: float, altura: float) -&gt; float:
+    return round(peso / (altura ** 2), 2)
+
+print(f&#x27;IMC: {calcula_imc(70.0, 1.75)}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 10</div><div class="markdown"><h3>Exercício 2 (Estilo Funcional)</h3>
+<p>Dada a lista de temperaturas em Celsius <code>[0, 15, 20, 25, 30]</code>, utilize <code>map</code> e uma função lambda para convertê-las para Fahrenheit: $F = C \times 1.8 + 32$.</p></div></article><article class="cell"><div class="cell-label">code · célula 11</div><pre class="input"><code>celsius = [0, 15, 20, 25, 30]
+fahrenheit = list(map(lambda c: c * 1.8 + 32, celsius))
+print(f&#x27;Fahrenheit: {fahrenheit}&#x27;)
+</code></pre></article></section><section class="notebook" id="nb5"><header><h1>Aula04 Pratica</h1><p class="path">Aula04/Aula04_Pratica.ipynb · 11 células · 6 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 04: Ferramentas Unix/Linux para Inspeção Rápida de Dados</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula04/Aula04_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Utilizar o bash diretamente do notebook via comandos mágicos (<code>!</code>)</li>
+<li>Inspecionar arquivos de texto brutos sem estourar a memória RAM (<code>head</code>, <code>tail</code>, <code>wc</code>)</li>
+<li>Filtrar e ordenar registros com utilitários de fluxo (<code>grep</code>, <code>sort</code>, <code>cut</code>)</li>
+<li>Reconhecer a importância do pré-processamento rápido em linha de comando</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Navegação e Inspeção de Arquivos</h2>
+<p>Antes de carregar conjuntos de dados de dezenas de gigabytes no Python, cientistas de dados inspecionam sua estrutura com ferramentas Unix.</p></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code># Verificando os arquivos da pasta da aula de manipulação (Aula08)
+!ls -lh ../Aula08/
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># Inspecionando as primeiras 5 linhas de um arquivo texto
+!head -n 5 ../Aula08/texto.txt
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 5</div><pre class="input"><code># Contando linhas, palavras e caracteres (wc)
+!wc -l ../Aula08/texto.txt
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 6</div><div class="markdown"><h2>2. Filtragem e Pipelines Unix</h2>
+<p>Podemos combinar comandos com pipes (<code>|</code>) para filtrar e contar ocorrências.</p></div></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code># Filtrando linhas que contêm a palavra &#x27;dados&#x27; (case insensitive)
+!grep -i &#x27;dados&#x27; ../Aula08/texto.txt | wc -l
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 04</h2>
+<h3>Exercício 1 (Inspeção de CSV)</h3>
+<p>Utilize o comando <code>head</code> para exibir as primeiras 3 linhas do arquivo <code>../Aula08/matriznum.csv</code>.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>!head -n 3 ../Aula08/matriznum.csv
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 10</div><div class="markdown"><h3>Exercício 2 (Contagem de Linhas)</h3>
+<p>Descubra quantas linhas de dados existem no arquivo <code>../Aula08/matriznum.csv</code> utilizando <code>wc -l</code>.</p></div></article><article class="cell"><div class="cell-label">code · célula 11</div><pre class="input"><code>!wc -l ../Aula08/matriznum.csv
+</code></pre></article></section><section class="notebook" id="nb6"><header><h1>Aula05 Pratica</h1><p class="path">Aula05/Aula05_Pratica.ipynb · 11 células · 6 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 05: Manipulação Eficiente de Strings e Formatação Moderna</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula05/Aula05_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Dominar métodos essenciais de limpeza e transformação de strings (<code>split</code>, <code>strip</code>, <code>replace</code>, <code>join</code>)</li>
+<li>Utilizar f-strings modernas para interpolação e formatação numérica avançada</li>
+<li>Trabalhar com fatiamento (<code>slicing</code>) de sequências</li>
+<li>Sanitizar dados textuais brutos comumente encontrados em cadastros e logs</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Métodos de Limpeza de Texto</h2>
+<p>Dados textuais do mundo real frequentemente contêm espaços excedentes, pontuações indesejadas e variações de caixa.</p></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>registro = &#x27;   Dr. Ney Lemke;  Física Médica ; UNESP   \n&#x27;
+
+# Limpando espaços externos e separando por ponto-e-vírgula
+campos = [campo.strip() for campo in registro.split(&#x27;;&#x27;)]
+print(f&#x27;Campos limpos: {campos}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># Transformações de caixa e substituição
+frase = &#x27;ciência dos dados na física médica&#x27;
+print(frase.upper())
+print(frase.title())
+print(frase.replace(&#x27;física médica&#x27;, &#x27;saúde&#x27;))
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>2. F-Strings Modernas e Fatiamento</h2>
+<p>As f-strings do Python permitem controle direto de alinhamento e precisão numérica.</p></div></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code>pi = 3.1415926535
+valor = 1250.75
+
+print(f&#x27;Pi formatado: {pi:.3f}&#x27;)
+print(f&#x27;Moeda alinhada: R$ {valor:&gt;10.2f}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code># Fatiamento [início:fim:passo]
+texto = &#x27;Python2026&#x27;
+print(texto[0:6])   # &#x27;Python&#x27;
+print(texto[6:])    # &#x27;2026&#x27;
+print(texto[::-1])  # Invertido
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 05</h2>
+<h3>Exercício 1 (Higienização de CPFs)</h3>
+<p>Dada a lista de documentos <code>[&#x27; 123.456.789-00 &#x27;, &#x27;987.654.321-11\n&#x27;, &#x27;111.222.333-44&#x27;]</code>, crie uma nova lista contendo apenas os dígitos numéricos limpos.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>docs = [&#x27; 123.456.789-00 &#x27;, &#x27;987.654.321-11\n&#x27;, &#x27;111.222.333-44&#x27;]
+docs_limpos = [d.strip().replace(&#x27;.&#x27;, &#x27;&#x27;).replace(&#x27;-&#x27;, &#x27;&#x27;) for d in docs]
+print(f&#x27;CPFs normalizados: {docs_limpos}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 10</div><div class="markdown"><h3>Exercício 2 (Extração de Domínio de E-mail)</h3>
+<p>Escreva uma função que receba um e-mail (ex: <code>aluno@unesp.br</code>) e retorne apenas o domínio (ex: <code>unesp.br</code>).</p></div></article><article class="cell"><div class="cell-label">code · célula 11</div><pre class="input"><code>def extrai_dominio(email: str) -&gt; str:
+    return email.strip().split(&#x27;@&#x27;)[-1]
+
+print(extrai_dominio(&#x27;ney.lemke@unesp.br&#x27;))
+</code></pre></article></section><section class="notebook" id="nb7"><header><h1>Aula06 Pratica</h1><p class="path">Aula06/Aula06_Pratica.ipynb · 9 células · 4 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 06: Estruturas de Dados Fundamentais e Comprehensions</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula06/Aula06_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Trabalhar com as quatro coleções centrais: Listas, Tuplas, Dicionários e Conjuntos (<code>set</code>)</li>
+<li>Compreender a eficiência de busca $O(1)$ em dicionários/conjuntos versus $O(n)$ em listas</li>
+<li>Utilizar List Comprehensions e Dict Comprehensions para transformações limpas</li>
+<li>Agrupar e contar frequências em coleções de dados</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. As Quatro Coleções Nativas de Python</h2>
+<ul>
+<li><strong>Lista (<code>list</code>)</strong>: ordenada, mutável, permite duplicatas.</li>
+<li><strong>Tupla (<code>tuple</code>)</strong>: ordenada, imutável (ideal para registros fixos).</li>
+<li><strong>Conjunto (<code>set</code>)</strong>: não-ordenado, mutável, elementos únicos (busca rápida $O(1)$).</li>
+<li><strong>Dicionário (<code>dict</code>)</strong>: pares chave-valor, chaves únicas.</li>
+</ul></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>idades = [21, 25, 21, 30, 25, 19, 21]
+
+# Deduplicação instantânea com set
+idades_unicas = set(idades)
+print(f&#x27;Original: {idades}&#x27;)
+print(f&#x27;Únicos: {idades_unicas}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 4</div><div class="markdown"><h2>2. Comprehensions (Listas e Dicionários)</h2>
+<p>Forma idiomática e de alta performance para mapear e filtrar coleções.</p></div></article><article class="cell"><div class="cell-label">code · célula 5</div><pre class="input"><code># Quadrados dos números pares de 0 a 10
+quadrados_pares = [x**2 for x in range(11) if x % 2 == 0]
+print(f&#x27;Quadrados pares: {quadrados_pares}&#x27;)
+
+# Dict comprehension: mapeando palavra -&gt; seu tamanho
+palavras = [&#x27;dados&#x27;, &#x27;ciência&#x27;, &#x27;python&#x27;, &#x27;análise&#x27;]
+tamanhos = {p: len(p) for p in palavras}
+print(f&#x27;Mapeamento de tamanhos: {tamanhos}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 6</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 06</h2>
+<h3>Exercício 1 (Contagem de Frequências)</h3>
+<p>Dada uma lista de diagnósticos clínicos, conte quantas vezes cada diagnóstico aparece utilizando um dicionário.</p></div></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code>diagnosticos = [&#x27;Gripe&#x27;, &#x27;Covid&#x27;, &#x27;Dengue&#x27;, &#x27;Gripe&#x27;, &#x27;Covid&#x27;, &#x27;Gripe&#x27;, &#x27;Resfriado&#x27;]
+
+contagem = {}
+for diag in diagnosticos:
+    contagem[diag] = contagem.get(diag, 0) + 1
+
+print(f&#x27;Frequências: {contagem}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h3>Exercício 2 (Operações com Conjuntos)</h3>
+<p>Dados dois conjuntos de pacientes que realizaram exames A e B, encontre:
+a) Pacientes que fizeram ambos os exames.
+b) Pacientes que fizeram apenas o exame A.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>exame_a = {&#x27;P01&#x27;, &#x27;P02&#x27;, &#x27;P03&#x27;, &#x27;P04&#x27;, &#x27;P05&#x27;}
+exame_b = {&#x27;P03&#x27;, &#x27;P05&#x27;, &#x27;P06&#x27;, &#x27;P07&#x27;}
+
+ambos = exame_a.intersection(exame_b)
+apenas_a = exame_a.difference(exame_b)
+
+print(f&#x27;Fizeram ambos: {ambos}&#x27;)
+print(f&#x27;Apenas exame A: {apenas_a}&#x27;)
+</code></pre></article></section><section class="notebook" id="nb8"><header><h1>Aula07 Pratica</h1><p class="path">Aula07/Aula07_Pratica.ipynb · 10 células · 5 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 07: Controle de Fluxo, Funções Modulares e Boas Práticas</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula07/Aula07_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Aplicar estruturas condicionais e laços de repetição de forma idiomática</li>
+<li>Utilizar funções utilitárias <code>enumerate()</code> e <code>zip()</code> para iteração sobre múltiplos conjuntos</li>
+<li>Definir funções com documentação (docstrings), valores padrão e <code>*args</code></li>
+<li>Tratar erros e exceções comuns em processamento de dados (<code>try/except</code>)</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Iteração Idiomática com <code>enumerate</code> e <code>zip</code></h2></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>pacientes = [&#x27;Ana&#x27;, &#x27;Bruno&#x27;, &#x27;Carla&#x27;, &#x27;Daniel&#x27;]
+idades = [24, 31, 28, 45]
+
+# zip para iterar em paralelo
+for nome, idade in zip(pacientes, idades):
+    print(f&#x27;{nome} tem {idade} anos.&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># enumerate para obter índice e elemento simultaneamente
+for idx, nome in enumerate(pacientes, start=1):
+    print(f&#x27;Paciente #{idx}: {nome}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>2. Funções Modulares e Robustas</h2></div></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code>def estatisticas_basicas(valores: list[float]) -&gt; dict[str, float]:
+    &quot;&quot;&quot;
+    Calcula média, mínimo e máximo de uma lista numérica.
+    &quot;&quot;&quot;
+    if not valores:
+        raise ValueError(&#x27;A lista não pode estar vazia.&#x27;)
+
+    return {
+        &#x27;media&#x27;: sum(valores) / len(valores),
+        &#x27;minimo&#x27;: min(valores),
+        &#x27;maximo&#x27;: max(valores)
+    }
+
+print(estatisticas_basicas([10.5, 20.0, 15.2, 33.1]))
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 7</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 07</h2>
+<h3>Exercício 1 (Função com Validação e Tratamento de Erros)</h3>
+<p>Escreva uma função <code>converte_para_float(lista_strings)</code> que converta cada elemento para float, ignorando valores que causem <code>ValueError</code> (ex: <code>&#x27;N/A&#x27;</code>, <code>&#x27;ausente&#x27;</code>).</p></div></article><article class="cell"><div class="cell-label">code · célula 8</div><pre class="input"><code>def converte_para_float(lista: list[str]) -&gt; list[float]:
+    validos = []
+    for item in lista:
+        try:
+            validos.append(float(item))
+        except ValueError:
+            continue
+    return validos
+
+dados_brutos = [&#x27;12.5&#x27;, &#x27;30.1&#x27;, &#x27;N/A&#x27;, &#x27;45.0&#x27;, &#x27;invalido&#x27;, &#x27;2.8&#x27;]
+print(f&#x27;Valores numéricos convertidos: {converte_para_float(dados_brutos)}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 9</div><div class="markdown"><h3>Exercício 2 (Classificador Simples com if/elif/else)</h3>
+<p>Crie uma função que classifique o nível de glicose em jejum: <code>&lt; 100</code> (Normal), <code>100 a 125</code> (Pré-diabetes), <code>&gt;= 126</code> (Diabetes).</p></div></article><article class="cell"><div class="cell-label">code · célula 10</div><pre class="input"><code>def classifica_glicose(valor: float) -&gt; str:
+    if valor &lt; 100:
+        return &#x27;Normal&#x27;
+    elif valor &lt;= 125:
+        return &#x27;Pré-diabetes&#x27;
+    else:
+        return &#x27;Diabetes&#x27;
+
+print(classifica_glicose(95))
+print(classifica_glicose(110))
+print(classifica_glicose(140))
+</code></pre></article></section><section class="notebook" id="nb9"><header><h1>Aula08 Pratica</h1><p class="path">Aula08/Aula08_Pratica.ipynb · 9 células · 4 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 08: Entrada/Saída de Arquivos e Leitura de Dados Compactados</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula08/Aula08_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Utilizar gerenciadores de contexto (<code>with open</code>) para manipulação segura de arquivos</li>
+<li>Ler arquivos de texto linha por linha de forma eficiente em memória</li>
+<li>Ler diretamente arquivos compactados com <code>gzip</code> sem descompactá-los no disco</li>
+<li>Processar arquivos CSV estruturados usando o módulo padrão <code>csv.reader</code></li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Leitura de Arquivo Texto com Gerenciador de Contexto (<code>with</code>)</h2></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>with open(&#x27;texto.txt&#x27;, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+    linhas = [linha.strip() for linha in f.readlines() if linha.strip()]
+
+print(f&#x27;Total de linhas lidas: {len(linhas)}&#x27;)
+print(f&#x27;Primeira linha: {linhas[0]}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 4</div><div class="markdown"><h2>2. Leitura Direta de Arquivo Compactado (<code>.gz</code>)</h2></div></article><article class="cell"><div class="cell-label">code · célula 5</div><pre class="input"><code>import gzip
+
+# Lendo arquivo comprimido da estação de outono
+with gzip.open(&#x27;arq_abril_outono.txt.gz&#x27;, &#x27;rt&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+    primeiras_linhas = [f.readline().strip() for _ in range(5)]
+
+for l in primeiras_linhas:
+    print(l)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 6</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 08</h2>
+<h3>Exercício 1 (Parsing de CSV Manual)</h3>
+<p>Leia o arquivo <code>matriznum.csv</code> (delimitado por espaços) usando o módulo <code>csv</code> e calcule a soma dos valores da primeira coluna numérica.</p></div></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code>import csv
+
+valores_col1 = []
+with open(&#x27;matriznum.csv&#x27;, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+    leitor = csv.reader(f, delimiter=&#x27; &#x27;)
+    for linha in leitor:
+        linha_limpa = [x for x in linha if x]
+        if linha_limpa:
+            try:
+                valores_col1.append(float(linha_limpa[0]))
+            except ValueError:
+                continue
+
+print(f&#x27;Valores coletados: {valores_col1}&#x27;)
+print(f&#x27;Soma da primeira coluna: {sum(valores_col1):.2f}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h3>Exercício 2 (Escrita de Arquivo de Relatório)</h3>
+<p>Gere um arquivo <code>relatorio_aula08.txt</code> salvando a contagem de elementos e a média calculada.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>media_col1 = sum(valores_col1) / len(valores_col1) if valores_col1 else 0.0
+with open(&#x27;relatorio_aula08.txt&#x27;, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;) as f:
+    f.write(&#x27;Relatório de Processamento - Aula 08\n&#x27;)
+    f.write(f&#x27;Quantidade de elementos: {len(valores_col1)}\n&#x27;)
+    f.write(f&#x27;Média: {media_col1:.2f}\n&#x27;)
+
+print(&#x27;Relatório gerado com sucesso.&#x27;)
+</code></pre></article></section><section class="notebook" id="nb10"><header><h1>Aula09 Pratica</h1><p class="path">Aula09/Aula09_Pratica.ipynb · 11 células · 6 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 09: Análise de Dados com Pandas I: Series, DataFrames e Indexação</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula09/Aula09_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Compreender a estrutura de <code>pd.Series</code> e <code>pd.DataFrame</code></li>
+<li>Carregar dados tabulares a partir de arquivos CSV (<code>pd.read_csv</code>)</li>
+<li>Realizar indexação rigorosa com <code>.loc</code> (rótulos) e <code>.iloc</code> (posições inteiras)</li>
+<li>Aplicar filtros com máscaras booleanas combinadas (<code>&amp;</code>, <code>|</code>, <code>~</code>)</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Criação e Inspeção de DataFrames</h2></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>import pandas as pd
+
+# Criando um DataFrame a partir de um dicionário
+dados = {
+    &#x27;paciente&#x27;: [&#x27;P01&#x27;, &#x27;P02&#x27;, &#x27;P03&#x27;, &#x27;P04&#x27;, &#x27;P05&#x27;],
+    &#x27;idade&#x27;: [25, 42, 60, 31, 55],
+    &#x27;glicose&#x27;: [92, 115, 140, 88, 128],
+    &#x27;grupo&#x27;: [&#x27;Controle&#x27;, &#x27;Tratamento&#x27;, &#x27;Tratamento&#x27;, &#x27;Controle&#x27;, &#x27;Tratamento&#x27;]
+}
+
+df = pd.DataFrame(dados)
+df
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># Inspeção sumária
+print(df.info())
+print(&#x27;\nEstatísticas Numéricas:&#x27;)
+print(df.describe())
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>2. Indexação e Filtragem Booleana</h2>
+<ul>
+<li><code>.loc</code>: seleção baseada em nomes de colunas e rótulos de índice.</li>
+<li><code>.iloc</code>: seleção baseada estritamente em índices inteiros posicionais.</li>
+</ul></div></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code># Selecionando linha 0 a 2 e colunas &#x27;paciente&#x27; e &#x27;glicose&#x27;
+print(df.loc[0:2, [&#x27;paciente&#x27;, &#x27;glicose&#x27;]])
+
+# Selecionando com iloc (posições 0 e 1, colunas 0 e 1)
+print(df.iloc[0:2, 0:2])
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code># Filtro booleano: pacientes do grupo &#x27;Tratamento&#x27; com glicose &gt;= 120
+mascara = (df[&#x27;grupo&#x27;] == &#x27;Tratamento&#x27;) &amp; (df[&#x27;glicose&#x27;] &gt;= 120)
+df[mascara]
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 09</h2>
+<h3>Exercício 1 (Cálculo de Novas Colunas)</h3>
+<p>Crie uma nova coluna chamada <code>idade_meses</code> que corresponda à idade do paciente multiplicada por 12.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>df[&#x27;idade_meses&#x27;] = df[&#x27;idade&#x27;] * 12
+df
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 10</div><div class="markdown"><h3>Exercício 2 (Agrupamento Descritivo Simples)</h3>
+<p>Calcule a média de glicose e de idade para cada um dos grupos (<code>Controle</code> vs <code>Tratamento</code>).</p></div></article><article class="cell"><div class="cell-label">code · célula 11</div><pre class="input"><code>df.groupby(&#x27;grupo&#x27;)[[&#x27;idade&#x27;, &#x27;glicose&#x27;]].mean()
+</code></pre></article></section><section class="notebook" id="nb11"><header><h1>Aula10 Pratica</h1><p class="path">Aula10/Aula10_Pratica.ipynb · 12 células · 6 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 10: Pandas II: Pipeline de Limpeza, Agregação (GroupBy) e Junções (Merge)</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula10/Aula10_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Identificar e tratar valores ausentes (<code>isna</code>, <code>dropna</code>, <code>fillna</code>)</li>
+<li>Aplicar o paradigma Split-Apply-Combine utilizando <code>groupby</code> e agregações com <code>.agg()</code></li>
+<li>Combinar diferentes tabelas de dados utilizando <code>pd.merge()</code> e <code>pd.concat()</code></li>
+<li>Estruturar um pipeline básico de transformação de dados (ETL)</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Tratamento de Dados Ausentes (Missing Values)</h2></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>import pandas as pd
+import numpy as np
+
+df_sujo = pd.DataFrame({
+    &#x27;id&#x27;: [101, 102, 103, 104, 105],
+    &#x27;temperatura&#x27;: [36.5, np.nan, 38.2, 37.0, np.nan],
+    &#x27;pressao&#x27;: [120, 130, np.nan, 125, 118],
+    &#x27;setor&#x27;: [&#x27;A&#x27;, &#x27;A&#x27;, &#x27;B&#x27;, &#x27;B&#x27;, &#x27;A&#x27;]
+})
+
+print(&#x27;Valores nulos por coluna:&#x27;)
+print(df_sujo.isna().sum())
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># Imputação de missing pela mediana da coluna
+mediana_temp = df_sujo[&#x27;temperatura&#x27;].median()
+df_limpo = df_sujo.copy()
+df_limpo[&#x27;temperatura&#x27;] = df_limpo[&#x27;temperatura&#x27;].fillna(mediana_temp)
+df_limpo
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>2. Agregações Complexas com GroupBy</h2></div></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code># Agrupando por setor e calculando múltiplas métricas com .agg()
+resumo_setor = df_limpo.groupby(&#x27;setor&#x27;).agg(
+    temp_media=(&#x27;temperatura&#x27;, &#x27;mean&#x27;),
+    temp_max=(&#x27;temperatura&#x27;, &#x27;max&#x27;),
+    contagem=(&#x27;id&#x27;, &#x27;count&#x27;)
+)
+resumo_setor
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 7</div><div class="markdown"><h2>3. Junção de Tabelas (Merge)</h2></div></article><article class="cell"><div class="cell-label">code · célula 8</div><pre class="input"><code>df_meta = pd.DataFrame({
+    &#x27;setor&#x27;: [&#x27;A&#x27;, &#x27;B&#x27;],
+    &#x27;responsavel&#x27;: [&#x27;Dra. Julia&#x27;, &#x27;Dr. Roberto&#x27;],
+    &#x27;andar&#x27;: [2, 3]
+})
+
+# Inner join relacionando pacientes ao responsável pelo setor
+df_completo = pd.merge(df_limpo, df_meta, on=&#x27;setor&#x27;, how=&#x27;left&#x27;)
+df_completo
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 9</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 10</h2>
+<h3>Exercício 1 (Detecção de Linhas Completas)</h3>
+<p>Utilize <code>dropna()</code> para gerar um novo DataFrame contendo apenas as linhas que não possuíam nenhum valor nulo no <code>df_sujo</code> original.</p></div></article><article class="cell"><div class="cell-label">code · célula 10</div><pre class="input"><code>df_sem_nulos = df_sujo.dropna()
+df_sem_nulos
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 11</div><div class="markdown"><h3>Exercício 2 (Agregação Customizada)</h3>
+<p>Calcule o desvio padrão e a média da pressão arterial por responsável médico no <code>df_completo</code>.</p></div></article><article class="cell"><div class="cell-label">code · célula 12</div><pre class="input"><code>df_completo.groupby(&#x27;responsavel&#x27;)[&#x27;pressao&#x27;].agg([&#x27;mean&#x27;, &#x27;std&#x27;])
+</code></pre></article></section><section class="notebook" id="nb12"><header><h1>Aula11 Pratica</h1><p class="path">Aula11/Aula11_Pratica.ipynb · 11 células · 5 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 11: Computação Científica de Alta Performance com NumPy</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula11/Aula11_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Criar e manipular arrays multidimensionais (<code>np.ndarray</code>) com tipos definidos (<code>dtype</code>)</li>
+<li>Comparar a performance da computação vetorizada versus laços em Python com <code>%timeit</code></li>
+<li>Aplicar as regras de Broadcasting em operações entre arrays de dimensões distintas</li>
+<li>Realizar fatiamento multidimensional e filtragem condicional em matrizes</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Criação e Propriedades de Arrays</h2></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>import numpy as np
+
+arr_1d = np.array([10, 20, 30, 40, 50], dtype=np.float64)
+arr_zeros = np.zeros((3, 4))
+arr_seq = np.linspace(0, 1, 11)  # 11 pontos igualmente espaçados de 0 a 1
+
+print(f&#x27;Shape arr_zeros: {arr_zeros.shape}&#x27;)
+print(f&#x27;Dtype: {arr_1d.dtype}&#x27;)
+print(f&#x27;Sequência linspace:\n{arr_seq}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 4</div><div class="markdown"><h2>2. Vetorização vs Laços Puros (Benchmark)</h2></div></article><article class="cell"><div class="cell-label">code · célula 5</div><pre class="input"><code>tamanho = 1_000_000
+lista_python = list(range(tamanho))
+arr_numpy = np.arange(tamanho)
+
+# Medindo tempo de elevação ao quadrado em Python puro
+%timeit [x**2 for x in lista_python]
+
+# Medindo tempo com vetorização NumPy
+%timeit arr_numpy ** 2
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 6</div><div class="markdown"><h2>3. Broadcasting na Prática</h2>
+<p>O NumPy estende automaticamente arrays com dimensões compatíveis para realizar operações sem cópia explícita de dados.</p></div></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code>matriz = np.array([
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+])
+
+vetor = np.array([10, 20, 30])
+
+# Somando vetor (1, 3) a cada linha da matriz (3, 3)
+soma_broadcasting = matriz + vetor
+print(soma_broadcasting)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 11</h2>
+<h3>Exercício 1 (Normalização Min-Max)</h3>
+<p>Dado o array <code>dados = np.array([15, 23, 18, 45, 12, 89, 34])</code>, normalize seus valores no intervalo $[0, 1]$ usando a fórmula: $x_{norm} = \frac{x - x_{min}}{x_{max} - x_{min}}$.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>dados = np.array([15, 23, 18, 45, 12, 89, 34])
+dados_norm = (dados - dados.min()) / (dados.max() - dados.min())
+print(f&#x27;Normalizado: {dados_norm}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 10</div><div class="markdown"><h3>Exercício 2 (Filtro Booleano em Matriz)</h3>
+<p>Crie uma matriz $4 \times 4$ de números aleatórios entre 0 e 100 (<code>np.random.default_rng(42)</code>) e substitua todos os valores menores que 50 por zero.</p></div></article><article class="cell"><div class="cell-label">code · célula 11</div><pre class="input"><code>rng = np.random.default_rng(42)
+matriz_aleatoria = rng.integers(0, 100, size=(4, 4))
+print(&#x27;Original:\n&#x27;, matriz_aleatoria)
+
+matriz_aleatoria[matriz_aleatoria &lt; 50] = 0
+print(&#x27;\nModificada (valores &lt; 50 zerados):\n&#x27;, matriz_aleatoria)
+</code></pre></article></section><section class="notebook" id="nb13"><header><h1>Aula12 Pratica</h1><p class="path">Aula12/Aula12_Pratica.ipynb · 9 células · 4 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 12: Visualização de Dados com Matplotlib: Interface Orientada a Objetos</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula12/Aula12_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Dominar a anatomia de um gráfico no Matplotlib (<code>Figure</code> e <code>Axes</code>)</li>
+<li>Utilizar a interface Orientada a Objetos (<code>fig, ax = plt.subplots()</code>) recomendada</li>
+<li>Criar gráficos de dispersão (<code>scatter</code>), linhas e barras com formatação completa</li>
+<li>Exportar figuras prontas para publicação científica em alta resolução</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. A Interface Orientada a Objetos (<code>plt.subplots</code>)</h2></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+# Dados sintéticos de calibração instrumental
+tempo = np.linspace(0, 10, 50)
+sinal = 2.5 * np.sin(tempo) + np.random.normal(0, 0.2, size=50)
+
+fig, ax = plt.subplots(figsize=(8, 4), dpi=100)
+ax.plot(tempo, sinal, color=&#x27;#0F2B45&#x27;, linewidth=2, label=&#x27;Sinal Medido&#x27;)
+ax.set_title(&#x27;Resposta Temporal do Sensor&#x27;, fontsize=14, fontweight=&#x27;bold&#x27;, pad=12)
+ax.set_xlabel(&#x27;Tempo (s)&#x27;, fontsize=12)
+ax.set_ylabel(&#x27;Tensão (mV)&#x27;, fontsize=12)
+ax.grid(True, linestyle=&#x27;--&#x27;, alpha=0.5)
+ax.legend(frameon=True)
+plt.tight_layout()
+plt.show()
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 4</div><div class="markdown"><h2>2. Gráficos de Dispersão com Dataset Real</h2></div></article><article class="cell"><div class="cell-label">code · célula 5</div><pre class="input"><code># Carregando o conjunto de dados automotivo
+df_carros = pd.read_csv(&#x27;Automobile price data.csv&#x27;)
+
+# Limpeza simples de valores não numéricos em &#x27;price&#x27; e &#x27;horsepower&#x27;
+df_carros[&#x27;price&#x27;] = pd.to_numeric(df_carros[&#x27;price&#x27;], errors=&#x27;coerce&#x27;)
+df_carros[&#x27;horsepower&#x27;] = pd.to_numeric(df_carros[&#x27;horsepower&#x27;], errors=&#x27;coerce&#x27;)
+df_carros_clean = df_carros.dropna(subset=[&#x27;price&#x27;, &#x27;horsepower&#x27;])
+
+fig, ax = plt.subplots(figsize=(8, 5))
+scatter = ax.scatter(
+    df_carros_clean[&#x27;horsepower&#x27;],
+    df_carros_clean[&#x27;price&#x27;],
+    c=df_carros_clean[&#x27;city-mpg&#x27;],
+    cmap=&#x27;viridis&#x27;,
+    alpha=0.7,
+    edgecolors=&#x27;none&#x27;
+)
+cbar = fig.colorbar(scatter, ax=ax)
+cbar.set_label(&#x27;Consumo Urbano (City MPG)&#x27;)
+
+ax.set_title(&#x27;Relação entre Potência (HP) e Preço de Automóveis&#x27;, fontsize=13)
+ax.set_xlabel(&#x27;Potência (Horsepower)&#x27;)
+ax.set_ylabel(&#x27;Preço (USD)&#x27;)
+ax.grid(True, linestyle=&#x27;:&#x27;, alpha=0.6)
+plt.tight_layout()
+plt.show()
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 6</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 12</h2>
+<h3>Exercício 1 (Gráfico de Barras Médio)</h3>
+<p>Crie um gráfico de barras exibindo o preço médio dos automóveis por tipo de combustível (<code>fuel-type</code>).</p></div></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code>preco_combustivel = df_carros_clean.groupby(&#x27;fuel-type&#x27;)[&#x27;price&#x27;].mean()
+
+fig, ax = plt.subplots(figsize=(6, 4))
+ax.bar(preco_combustivel.index, preco_combustivel.values, color=[&#x27;#1B4973&#x27;, &#x27;#0E7C86&#x27;], width=0.5)
+ax.set_title(&#x27;Preço Médio por Tipo de Combustível&#x27;)
+ax.set_ylabel(&#x27;Preço Médio (USD)&#x27;)
+ax.grid(axis=&#x27;y&#x27;, linestyle=&#x27;--&#x27;, alpha=0.6)
+plt.tight_layout()
+plt.show()
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 8</div><div class="markdown"><h3>Exercício 2 (Exportação de Gráfico em Alta Resolução)</h3>
+<p>Salve o gráfico do exercício anterior em arquivo PNG com resolução de 300 DPI utilizando <code>fig.savefig(&#x27;preco_combustivel.png&#x27;, dpi=300)</code>.</p></div></article><article class="cell"><div class="cell-label">code · célula 9</div><pre class="input"><code>fig.savefig(&#x27;preco_combustivel.png&#x27;, dpi=300)
+print(&#x27;Figura exportada com sucesso.&#x27;)
+</code></pre></article></section><section class="notebook" id="nb14"><header><h1>Aula13 Pratica</h1><p class="path">Aula13/Aula13_Pratica.ipynb · 7 células · 3 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 13: Visualização Estatística Avançada com Seaborn</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula13/Aula13_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Explorar distribuições univariadas e bivariadas (<code>sns.histplot</code>, <code>sns.kdeplot</code>)</li>
+<li>Identificar assimetrias e outliers com Boxplots e Violin plots</li>
+<li>Mapear dimensões categóricas em gráficos de dispersão (<code>hue</code>, <code>style</code>, <code>size</code>)</li>
+<li>Calcular matrizes de correlação e visualizá-las com mapas de calor (<code>sns.heatmap</code>)</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Visualização de Distribuições e Outliers</h2></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+
+sns.set_theme(style=&#x27;whitegrid&#x27;, palette=&#x27;deep&#x27;)
+
+df_carros = pd.read_csv(&#x27;Automobile price data.csv&#x27;)
+df_carros[&#x27;price&#x27;] = pd.to_numeric(df_carros[&#x27;price&#x27;], errors=&#x27;coerce&#x27;)
+df_carros[&#x27;horsepower&#x27;] = pd.to_numeric(df_carros[&#x27;horsepower&#x27;], errors=&#x27;coerce&#x27;)
+df_carros_clean = df_carros.dropna(subset=[&#x27;price&#x27;, &#x27;horsepower&#x27;, &#x27;fuel-type&#x27;, &#x27;body-style&#x27;])
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 4))
+
+# Histograma com curva KDE
+sns.histplot(df_carros_clean[&#x27;price&#x27;], kde=True, ax=axes[0], color=&#x27;#1B4973&#x27;)
+axes[0].set_title(&#x27;Distribuição de Preços (Assimetria Positiva)&#x27;)
+
+# Boxplot comparativo por carroceria
+sns.boxplot(data=df_carros_clean, x=&#x27;body-style&#x27;, y=&#x27;price&#x27;, ax=axes[1])
+axes[1].set_title(&#x27;Preço por Tipo de Carroceria&#x27;)
+axes[1].tick_params(axis=&#x27;x&#x27;, rotation=30)
+
+plt.tight_layout()
+plt.show()
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 4</div><div class="markdown"><h2>2. Matriz de Correlação e Heatmap</h2></div></article><article class="cell"><div class="cell-label">code · célula 5</div><pre class="input"><code>colunas_numericas = [&#x27;price&#x27;, &#x27;horsepower&#x27;, &#x27;city-mpg&#x27;, &#x27;highway-mpg&#x27;, &#x27;curb-weight&#x27;, &#x27;engine-size&#x27;]
+for col in colunas_numericas:
+    df_carros_clean[col] = pd.to_numeric(df_carros_clean[col], errors=&#x27;coerce&#x27;)
+
+corr_matrix = df_carros_clean[colunas_numericas].dropna().corr()
+
+plt.figure(figsize=(7, 5))
+sns.heatmap(corr_matrix, annot=True, cmap=&#x27;Blues&#x27;, fmt=&#x27;.2f&#x27;, linewidths=0.5)
+plt.title(&#x27;Matriz de Correlação de Pearson&#x27;)
+plt.tight_layout()
+plt.show()
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 6</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 13</h2>
+<h3>Exercício 1 (Scatterplot Categórico)</h3>
+<p>Utilize <code>sns.scatterplot()</code> para cruzar <code>engine-size</code> (eixo X) com <code>price</code> (eixo Y), diferenciando as cores (<code>hue</code>) pelo tipo de combustível (<code>fuel-type</code>).</p></div></article><article class="cell"><div class="cell-label">code · célula 7</div><pre class="input"><code>plt.figure(figsize=(8, 5))
+sns.scatterplot(
+    data=df_carros_clean,
+    x=&#x27;engine-size&#x27;,
+    y=&#x27;price&#x27;,
+    hue=&#x27;fuel-type&#x27;,
+    alpha=0.8,
+    s=70
+)
+plt.title(&#x27;Preço vs Tamanho do Motor por Combustível&#x27;)
+plt.tight_layout()
+plt.show()
+</code></pre></article></section><section class="notebook" id="nb15"><header><h1>Aula14 Pratica</h1><p class="path">Aula14/Aula14_Pratica.ipynb · 8 células · 4 de código</p></header><article class="cell"><div class="cell-label">markdown · célula 1</div><div class="markdown"><h1>Ciência dos Dados I: Análise Exploratória (2026)</h1>
+<h3>Aula 14: Introdução ao Aprendizado de Máquina com Scikit-Learn</h3>
+<p><strong>Prof. Dr. Ney Lemke</strong> | <em>UNESP -- Instituto de Biociências de Botucatu</em>
+<a href="https://colab.research.google.com/github/neylemkeunesp/CienciaDados2026/blob/main/Aula14/Aula14_Pratica.ipynb"></a></p>
+<hr>
+<h3>🎯 Objetivos Práticos da Aula:</h3>
+<ul>
+<li>Compreender a API padrão do Scikit-Learn (<code>fit</code>, <code>predict</code>, <code>transform</code>)</li>
+<li>Ajustar um modelo de Regressão Linear e interpretar coeficientes e métricas ($R^2$, RMSE)</li>
+<li>Visualizar a reta de regressão ajustada sobre os dados reais</li>
+<li>Aplicar o algoritmo de agrupamento não-supervisionado K-Means e identificar centróides</li>
+</ul>
+<hr></div></article><article class="cell"><div class="cell-label">markdown · célula 2</div><div class="markdown"><h2>1. Aprendizado Supervisionado: Regressão Linear</h2>
+<p>Vamos prever o preço de um automóvel com base em sua potência (<code>horsepower</code>).</p></div></article><article class="cell"><div class="cell-label">code · célula 3</div><pre class="input"><code>import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import r2_score, mean_squared_error
+
+# Carregando dados
+df = pd.read_csv(&#x27;Automobile price data.csv&#x27;)
+df[&#x27;price&#x27;] = pd.to_numeric(df[&#x27;price&#x27;], errors=&#x27;coerce&#x27;)
+df[&#x27;horsepower&#x27;] = pd.to_numeric(df[&#x27;horsepower&#x27;], errors=&#x27;coerce&#x27;)
+df_reg = df.dropna(subset=[&#x27;price&#x27;, &#x27;horsepower&#x27;])
+
+# Matriz de features X (2D) e vetor target y (1D)
+X = df_reg[[&#x27;horsepower&#x27;]]
+y = df_reg[&#x27;price&#x27;]
+
+# Instanciando e treinando o modelo
+modelo = LinearRegression()
+modelo.fit(X, y)
+
+y_pred = modelo.predict(X)
+
+print(f&#x27;Coeficiente Angular (Slope): {modelo.coef_[0]:.2f}&#x27;)
+print(f&#x27;Intercepto: {modelo.intercept_:.2f}&#x27;)
+print(f&#x27;R² Score: {r2_score(y, y_pred):.3f}&#x27;)
+print(f&#x27;RMSE: {np.sqrt(mean_squared_error(y, y_pred)):.2f}&#x27;)
+</code></pre></article><article class="cell"><div class="cell-label">code · célula 4</div><pre class="input"><code># Visualizando o ajuste
+plt.figure(figsize=(8, 5))
+plt.scatter(X, y, color=&#x27;#1B4973&#x27;, alpha=0.6, label=&#x27;Dados Reais&#x27;)
+plt.plot(X, y_pred, color=&#x27;#D97706&#x27;, linewidth=2.5, label=&#x27;Reta de Regressão&#x27;)
+plt.title(&#x27;Regressão Linear: Preço vs Potência&#x27;)
+plt.xlabel(&#x27;Potência (Horsepower)&#x27;)
+plt.ylabel(&#x27;Preço (USD)&#x27;)
+plt.legend()
+plt.grid(True, linestyle=&#x27;--&#x27;, alpha=0.5)
+plt.tight_layout()
+plt.show()
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 5</div><div class="markdown"><h2>2. Aprendizado Não-Supervisionado: Clusterização K-Means</h2>
+<p>Identificando grupos naturais de veículos combinando potência e consumo de combustível.</p></div></article><article class="cell"><div class="cell-label">code · célula 6</div><pre class="input"><code>from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+df_reg[&#x27;city-mpg&#x27;] = pd.to_numeric(df_reg[&#x27;city-mpg&#x27;], errors=&#x27;coerce&#x27;)
+X_cluster = df_reg[[&#x27;horsepower&#x27;, &#x27;city-mpg&#x27;]].dropna()
+
+# Padronização de escala (essencial para métodos baseados em distância)
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X_cluster)
+
+# Ajuste de K-Means com k=3 clusters
+kmeans = KMeans(n_clusters=3, random_state=42, n_init=&#x27;auto&#x27;)
+X_cluster[&#x27;cluster&#x27;] = kmeans.fit_predict(X_scaled)
+
+plt.figure(figsize=(8, 5))
+sns_plot = plt.scatter(X_cluster[&#x27;horsepower&#x27;], X_cluster[&#x27;city-mpg&#x27;], c=X_cluster[&#x27;cluster&#x27;], cmap=&#x27;tab10&#x27;, alpha=0.7)
+plt.title(&#x27;Agrupamento K-Means (k=3)&#x27;)
+plt.xlabel(&#x27;Potência (HP)&#x27;)
+plt.ylabel(&#x27;Consumo (City MPG)&#x27;)
+plt.grid(True, linestyle=&#x27;:&#x27;, alpha=0.6)
+plt.colorbar(sns_plot, label=&#x27;Cluster&#x27;)
+plt.tight_layout()
+plt.show()
+</code></pre></article><article class="cell"><div class="cell-label">markdown · célula 7</div><div class="markdown"><h2>✍️ Exercícios Práticos da Aula 14</h2>
+<h3>Exercício 1 (Predição com o Modelo Treinado)</h3>
+<p>Utilize o modelo de Regressão Linear treinado para prever o preço estimado de um veículo com 150 HP e de outro com 220 HP.</p></div></article><article class="cell"><div class="cell-label">code · célula 8</div><pre class="input"><code>novos_veiculos = pd.DataFrame({&#x27;horsepower&#x27;: [150, 220]})
+predicoes = modelo.predict(novos_veiculos)
+for hp, preco in zip([150, 220], predicoes):
+    print(f&#x27;Veículo com {hp} HP -&gt; Preço estimado: R$ {preco:,.2f}&#x27;)
+</code></pre></article></section></main>
+<script>const buttons=[...document.querySelectorAll('.nav-item')];const panels=[...document.querySelectorAll('.notebook')];function select(key){buttons.forEach(b=>b.classList.toggle('active',b.dataset.key===key));panels.forEach(p=>p.classList.toggle('active',p.id===key));}buttons.forEach(b=>b.addEventListener('click',()=>select(b.dataset.key)));document.querySelector('#search').addEventListener('input',e=>{const q=e.target.value.toLowerCase();buttons.forEach(b=>b.style.display=b.textContent.toLowerCase().includes(q)?'block':'none');});</script></body></html>
