@@ -301,15 +301,24 @@ def generate_all():
             "Aplicar filtros com máscaras booleanas combinadas (`&`, `|`, `~`)"
         ],
         cells_data=[
-            ("md", "## 1. Criação e Inspeção de DataFrames"),
-            ("code", "import pandas as pd\n\n# Criando um DataFrame a partir de um dicionário\ndados = {\n    'paciente': ['P01', 'P02', 'P03', 'P04', 'P05'],\n    'idade': [25, 42, 60, 31, 55],\n    'glicose': [92, 115, 140, 88, 128],\n    'grupo': ['Controle', 'Tratamento', 'Tratamento', 'Controle', 'Tratamento']\n}\n\ndf = pd.DataFrame(dados)\ndf"),
-            ("code", "# Inspeção sumária\nprint(df.info())\nprint('\\nEstatísticas Numéricas:')\nprint(df.describe())"),
-            ("md", "## 2. Indexação e Filtragem Booleana\n\n- `.loc`: seleção baseada em nomes de colunas e rótulos de índice.\n- `.iloc`: seleção baseada estritamente em índices inteiros posicionais."),
+            ("md", "## 1. Series e DataFrame"),
+            ("code", "import pandas as pd\n\n# pd.Series: vetor unidimensional com rótulos\nidades = pd.Series([25, 42, 60, 31, 55], index=['P01', 'P02', 'P03', 'P04', 'P05'], name='idade')\nprint(idades)\nprint('Índice:', list(idades.index))\nprint('Valores:', list(idades.values))"),
+            ("code", "# pd.DataFrame: tabela de Séries (colunas)\ndados = {\n    'paciente': ['P01', 'P02', 'P03', 'P04', 'P05'],\n    'idade': [25, 42, 60, 31, 55],\n    'glicose': [92, 115, 140, 88, 128],\n    'grupo': ['Controle', 'Tratamento', 'Tratamento', 'Controle', 'Tratamento']\n}\n\ndf = pd.DataFrame(dados)\ndf"),
+            ("code", "# Inspeção sumária\ndf.info()\ndf.describe()"),
+            ("md", "## 2. Leitura de Dados Tabulares (pd.read_csv)\n\n- `pd.read_csv('arquivo.csv')` lê um CSV e devolve um `DataFrame`.\n- `df.head()`, `df.shape` e `df.dtypes` resumem a estrutura do dado."),
+            ("code", "# Carregando um CSV real da pasta da aula\ndf_ascii = pd.read_csv('dicchar.csv')\ndf_ascii.head()"),
+            ("code", "df_ascii.info()\nprint('Dimensões:', df_ascii.shape)\nprint('Tipos:', dict(df_ascii.dtypes))"),
+            ("md", "## 3. Indexação com .loc e .iloc\n\n- `.loc`: seleção baseada em nomes de colunas e rótulos de índice.\n- `.iloc`: seleção baseada estritamente em índices inteiros posicionais."),
             ("code", "# Selecionando linha 0 a 2 e colunas 'paciente' e 'glicose'\nprint(df.loc[0:2, ['paciente', 'glicose']])\n\n# Selecionando com iloc (posições 0 e 1, colunas 0 e 1)\nprint(df.iloc[0:2, 0:2])"),
-            ("code", "# Filtro booleano: pacientes do grupo 'Tratamento' com glicose >= 120\nmascara = (df['grupo'] == 'Tratamento') & (df['glicose'] >= 120)\ndf[mascara]"),
+            ("md", "## 4. Filtros Booleanos Combinados (&, |, ~)\n\n- `&` (E) entre duas condições.\n- `|` (OU) entre duas condições.\n- `~` (NÃO) inverte uma condição."),
+            ("code", "# & (E): Tratamento E glicose >= 120\nmascara_e = (df['grupo'] == 'Tratamento') & (df['glicose'] >= 120)\ndf[mascara_e]"),
+            ("code", "# | (OU): Controle OU glicose >= 120\nmascara_ou = (df['grupo'] == 'Controle') | (df['glicose'] >= 120)\ndf[mascara_ou]"),
+            ("code", "# ~ (NÃO): todos exceto Tratamento\nmascara_nao = ~(df['grupo'] == 'Tratamento')\ndf[mascara_nao]\n\n# Combinado com dado real: dígitos ASCII (num de 48 a 57)\ndf_ascii[(df_ascii['num'] >= 48) & (df_ascii['num'] <= 57)]"),
             ("md", "## ✍️ Exercícios Práticos da Aula 09\n\n### Exercício 1 (Cálculo de Novas Colunas)\nCrie uma nova coluna chamada `idade_meses` que corresponda à idade do paciente multiplicada por 12."),
-            ("code", "df['idade_meses'] = df['idade'] * 12\ndf"),
-            ("md", "### Exercício 2 (Agrupamento Descritivo Simples)\nCalcule a média de glicose e de idade para cada um dos grupos (`Controle` vs `Tratamento`)."),
+            ("code", "df['idade_meses'] = df['idade'] * 12\ndf.head()"),
+            ("md", "### Exercício 2 (Filtro Combinado com &)\nNo DataFrame de pacientes, selecione os que têm idade entre 30 e 55 anos **e** glicose abaixo de 130."),
+            ("code", "df[(df['idade'] >= 30) & (df['idade'] <= 55) & (df['glicose'] < 130)]"),
+            ("md", "### Exercício 3 (Agrupamento Descritivo Simples)\nCalcule a média de glicose e de idade para cada um dos grupos (`Controle` vs `Tratamento`)."),
             ("code", "df.groupby('grupo')[['idade', 'glicose']].mean()")
         ]
     )

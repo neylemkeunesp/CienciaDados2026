@@ -1,0 +1,167 @@
+% Aula 09 - Prática: Pandas I (Series, DataFrames, Indexação e Filtros)
+% Segue o modelo das lâminas do curso (tema beamer_theme_cienciadados2026).
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[Aula 09 - Prática Pandas I]{Ciência dos Dados I: Análise Exploratória}
+\subtitle{Aula 09 (Prática): Pandas I -- Series, DataFrames e Indexação}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Versão 2026}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Sumário da Aula}
+  \tableofcontents
+\end{frame}
+
+\section{Series e DataFrame}
+
+\begin{frame}[fragile]{Estruturas Centrais do Pandas}
+  \begin{block}{\texttt{pd.Series} -- vetor unidimensional rotulado}
+    Cada elemento tem um rótulo (\texttt{.index}) e os dados ficam em \texttt{.values}.
+  \end{block}
+  \begin{lstlisting}
+import pandas as pd
+
+idades = pd.Series([25, 42, 60, 31, 55],
+                   index=['P01','P02','P03','P04','P05'],
+                   name='idade')
+print(idades.index)   # rótulos
+print(idades.values)  # dados
+  \end{lstlisting}
+  \begin{block}{\texttt{pd.DataFrame} -- tabela de colunas}
+    Construído a partir de um dicionário: cada chave vira uma coluna.
+  \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Criando um DataFrame}
+  \begin{lstlisting}
+dados = {
+    'paciente': ['P01','P02','P03','P04','P05'],
+    'idade'   : [25, 42, 60, 31, 55],
+    'glicose' : [92, 115, 140, 88, 128],
+    'grupo'   : ['Controle','Tratamento','Tratamento',
+                 'Controle','Tratamento']
+}
+df = pd.DataFrame(dados)
+df
+  \end{lstlisting}
+  \begin{alertblock}{Inspeção sem \texttt{print}}
+    \texttt{df.info()} já imprime na tela e retorna \texttt{None} -- não use \texttt{print(df.info())}.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]{Inspeção Sumária}
+  \begin{itemize}
+    \item \texttt{df.info()}: tipos de cada coluna e contagem de não-nulos.
+    \item \texttt{df.describe()}: média, desvio padrão, quartis, mínimo e máximo.
+  \end{itemize}
+  \begin{lstlisting}
+df.info()      # resumo da estrutura e tipos
+df.describe()  # estatísticas descritivas por coluna numérica
+  \end{lstlisting}
+\end{frame}
+
+\section{Leitura de Dados Tabulares (CSV)}
+
+\begin{frame}[fragile]{Carregando um CSV com \texttt{pd.read\_csv}}
+  \begin{itemize}
+    \item \texttt{pd.read\_csv('arquivo.csv')} devolve um \texttt{DataFrame}.
+    \item \texttt{df.head()}, \texttt{df.shape} e \texttt{df.dtypes} resumem a estrutura.
+  \end{itemize}
+  \begin{lstlisting}
+# CSV real da pasta da aula (tabela ASCII: char, num, binario)
+df_ascii = pd.read_csv('dicchar.csv')
+df_ascii.head()          # primeiras 5 linhas
+print(df_ascii.shape)    # (n_linhas, n_colunas)
+print(dict(df_ascii.dtypes))
+  \end{lstlisting}
+\end{frame}
+
+\section{Indexação Rigorosa: \texttt{loc} vs. \texttt{iloc}}
+
+\begin{frame}[fragile]{Seleção de Dados sem Ambiguidade}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{\texttt{.loc[linhas, colunas]}}
+        \textbf{Baseada em RÓTULOS}:
+        \begin{itemize}
+          \item Usa nomes das colunas e índices.
+          \item O fim do intervalo é \textbf{inclusivo}.
+        \end{itemize}
+      \end{block}
+      \begin{lstlisting}
+df.loc[0:2, ['paciente','glicose']]
+      \end{lstlisting}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{\texttt{.iloc[linhas, colunas]}}
+        \textbf{Baseada em POSIÇÃO INTEIRA}:
+        \begin{itemize}
+          \item Inteiros de $0$ a $N-1$.
+          \item O fim do intervalo é \textbf{exclusivo}.
+        \end{itemize}
+      \end{block}
+      \begin{lstlisting}
+df.iloc[0:2, 0:2]
+      \end{lstlisting}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Filtros Booleanos Combinados}
+
+\begin{frame}[fragile]{Máscaras com \texttt{\&}, \texttt{|} e \texttt{\textasciitilde}}
+  \begin{alertblock}{Parênteses obrigatórios}
+    Cada condição deve ir entre parênteses ao combinar com os operadores bitwise.
+  \end{alertblock}
+  \begin{lstlisting}
+# & (E): Tratamento E glicose >= 120
+df[(df['grupo'] == 'Tratamento') & (df['glicose'] >= 120)]
+
+# | (OU): Controle OU glicose >= 120
+df[(df['grupo'] == 'Controle') | (df['glicose'] >= 120)]
+
+# ~ (NAO): todos exceto Tratamento
+df[~(df['grupo'] == 'Tratamento')]
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Filtro sobre Dado Real}
+  \begin{lstlisting}
+# Digitos ASCII da tabela de caracteres: num entre 48 e 57
+df_ascii[(df_ascii['num'] >= 48) & (df_ascii['num'] <= 57)]
+  \end{lstlisting}
+  \begin{block}{Lógica combinada}
+    Use \texttt{\&} para ``E'', \texttt{|} para ``OU'' e \texttt{\textasciitilde} para negação, sempre agrupando cada lado entre parênteses.
+  \end{block}
+\end{frame}
+
+\section{Exercícios da Aula}
+
+\begin{frame}[fragile]{Exercícios Práticos}
+  \begin{enumerate}
+    \item \textbf{Nova coluna}: crie \texttt{idade\_meses = idade $\times$ 12} e acrescente ao dataframe.
+    \item \textbf{Filtro combinado}: selecione pacientes com idade entre 30 e 55 anos \textbf{e} glicose abaixo de 130.
+    \item \textbf{Agrupamento}: média de glicose e idade por grupo (\texttt{Controle} vs \texttt{Tratamento}).
+  \end{enumerate}
+  \begin{lstlisting}
+# Dica (exercício 3):
+df.groupby('grupo')[['idade', 'glicose']].mean()
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item \texttt{Series} é um vetor rotulado; \texttt{DataFrame} é uma tabela de colunas.
+    \item \texttt{pd.read\_csv} carrega dados tabulares do disco.
+    \item Use \texttt{.loc} para rótulos e \texttt{.iloc} para posições numéricas.
+    \item Combine condições com \texttt{\&}, \texttt{|} e \texttt{\textasciitilde} sempre entre parênteses.
+    \item \textbf{Prática}: leitura de CSV, seleção e filtros booleanos.
+  \end{itemize}
+\end{frame}
+
+\end{document}
