@@ -1,0 +1,166 @@
+% Lâminas de motivação: SC26 (Supercomputing 2026) — Relevância e Escala.
+% Aula 11 (NumPy): transforma a aula prática em uma aula de 1 hora.
+\documentclass[aspectratio=169, 10pt]{beamer}
+\usepackage{beamer_theme_cienciadados2026}
+
+\title[SC26 — Supercomputing 2026]{Supercomputing 2026 (SC26): Relevância e Escala}
+\subtitle{Motivação para a Aula 11 — Computação Científica com NumPy}
+\author{Prof. Dr. Ney Lemke}
+\institute{UNESP -- Instituto de Biociências de Botucatu}
+\date{Edição 2026 · a partir da participação no SC26}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}{Por que começar por aqui?}
+  \begin{block}{Da sua máquina ao topo do mundo da computação}
+    Nesta aula vamos do \textbf{NumPy} (nosso primeiro degrau) até a \textbf{supercomputação}:
+    a escala de máquinas e problemas que movem a ciência moderna. O SC26 é o palco onde
+    essa comunidade se encontra.
+  \end{block}
+  \begin{itemize}
+    \item Entender \textbf{onde} a computação científica chegou (exascale).
+    \item Ver a \textbf{relevância} do HPC para a ciência e para a IA.
+    \item Conectar isso à ferramenta que vamos praticar: o \textbf{NumPy}.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Sumário das Lâminas}
+  \tableofcontents
+\end{frame}
+
+\section{O Evento}
+
+\begin{frame}{O que é o SC?}
+  \begin{block}{A maior conferência mundial de supercomputação}
+    \textbf{SC — The International Conference for High Performance Computing, Networking,
+    Storage, and Analysis}, o evento anual mais importante da comunidade de HPC
+    (patrocinado por ACM/SIGHPC e IEEE Computer Society).
+  \end{block}
+  \begin{itemize}
+    \item \textbf{38ª edição}, série que acontece desde 1988.
+    \item \textbf{SC26}: 15--20 de novembro de 2026, \textbf{McCormick Place, Chicago}.
+    \item Tema da edição: \textbf{``HPC Unites''} (o HPC une comunidades e ciências).
+    \item Exposição, programa técnico revisado por pares, \emph{Students@SC},
+          e o famoso \textbf{SCinet} (a maior rede temporária do mundo, montada para o evento).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{A escala de um evento gigante}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Participantes}
+        $\sim$ \textbf{18 a 20 mil} pesquisadores, engenheiros e estudantes de todo o mundo.
+      \end{block}
+      \begin{block}{Exposição}
+        \textbf{500+ empresas} e instituições \\ (laboratórios nacionais, universidades, startups).
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Dias / área}
+        6 dias de programação \\ (exposição em 3 dias) no \textbf{McCormick Place}, à beira do Lago Michigan.
+      \end{block}
+      \begin{alertblock}{IEEE 80 anos}
+        A IEEE Computer Society celebrou \textbf{80 anos} nesta edição.
+      \end{alertblock}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Escala de Computação}
+
+\begin{frame}{A escala numérica da computação}
+  \begin{block}{Operações de ponto flutuante por segundo (FLOPS)}
+    \centering
+    \begin{tabular}{l l l}
+      \toprule
+      \textbf{Sistema} & \textbf{Desempenho} & \textbf{Ordem} \\
+      \midrule
+      Seu laptop & $\sim 10^{11}$--$10^{13}$ & giga--tera \\
+      Cluster de laboratório & $\sim 10^{15}$ & peta \\
+      \textbf{Máquinas exascale} & $\sim 10^{18}$ & \textbf{exa} \\
+      Zettascale (próxima fronteira) & $\sim 10^{21}$ & zetta \\
+      \bottomrule
+    \end{tabular}
+  \end{block}
+  \begin{itemize}
+    \item O exascale é \textbf{um milhão de vezes} mais rápido que um laptop comum.
+    \item Frontier (ORNL), Aurora (ANL) e El Capitan (LLNL) são as máquinas de ponta nos EUA.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Por que tamanha rapidez importa?}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{block}{Ciência}
+        \begin{itemize}
+          \item Clima e tempo.
+          \item Descoberta de materiais e fármacos.
+          \item Física fundamental e fusão.
+          \item Simulação de proteínas e genômica.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{IA em escala}
+        \begin{itemize}
+          \item Treinar modelos gigantes exige \textbf{exascale}.
+          \item HPC e IA convergiram; viraram um só problema.
+          \item ``Agentic AI'' para ciência: agentes que planejam e rodam experimentos.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{O que Marcou o SC26}
+
+\begin{frame}{Temas-chave da edição 2026}
+  \begin{alertblock}{Keynote (Anima Anandkumar, Caltech)}
+    ``\textbf{The Next Scaling Law after LLMs: AI that Understands the Physical World}''
+    --- a ideia: a próxima grande evolução vem de IA treinada em \textbf{dados do mundo físico},
+    não apenas em texto.
+  \end{alertblock}
+  \begin{itemize}
+    \item \textbf{HPC Unites}: convergência entre supercomputação, IA e ciência.
+    \item \textbf{Exascale $\to$ Zettascale}: os próximos mil passos de capacidade.
+    \item \textbf{Agentes como cientistas} (NVIDIA: \emph{agents as scientists}), laboratórios autônomos.
+    \item Computação \textbf{quântica} entrando no datacenter de HPC.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Python e NumPy no coração do HPC}
+  \begin{block}{Surpresa boa da conferência}
+    No SC26 houve o workshop \textbf{``High Performance Python for Science at Scale''}
+    e falas sobre \textbf{Python como ``tecido conjuntivo''} de workflows exascale.
+  \end{block}
+  \begin{itemize}
+    \item Até na supercomputação, \textbf{Python/NumPy} é a camada que une simulação, IA e análise.
+    \item O que você aprende hoje (\textbf{arrays vetorizados}) é o \textbf{mesmo princípio} que roda nas máquinas exascale.
+    \item Vetorização, broadcasting e reduções \textbf{não são só ``academia''}: são otimização a sério.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Momento SC26}
+  \begin{block}{Registros do evento}
+    Espaço para fotos da sua participação (stand dos laboratórios, exposição, Chicago).
+  \end{block}
+  \begin{enumerate}
+    \item Impressão da \textbf{escala} (número de participantes e expositores).
+    \item \textbf{Demonstrações} de IA científica e simulação em tempo real.
+    \item \textbf{Conexão}: ver ``de perto'' que computação de alta performance move a ciência.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}{Resumo da Aula}
+  \begin{itemize}
+    \item \textbf{SC26}: o maior evento de HPC do mundo (Chicago, 38ª edição, ``HPC Unites'').
+    \item \textbf{Escala}: exascale ($10^{18}$ FLOPS) é $\sim 10^{6}$ vezes um laptop.
+    \item \textbf{Relevância}: ciência e IA dependem de HPC; as fronteiras (zettascale, IA do mundo físico, agentes) estão abertas.
+    \item \textbf{NumPy} é a base do ecossistema e a nossa prática na Aula 11.
+    \item \textbf{Prática}: criar, conhecer, indexar, filtrar, vetorizar e resumir arrays.
+  \end{itemize}
+\end{frame}
+
+\end{document}
