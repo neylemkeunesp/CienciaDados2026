@@ -355,28 +355,51 @@ def generate_all():
     # Aula 11: Computação Numérica com NumPy
     # ----------------------------------------------------
     create_notebook(
-        aula_id="Aula11",
-        title="Ciência dos Dados I: Análise Exploratória (2026)",
-        subtitle="Aula 11: Computação Científica de Alta Performance com NumPy",
-        objectives=[
-            "Criar e manipular arrays multidimensionais (`np.ndarray`) com tipos definidos (`dtype`)",
-            "Comparar a performance da computação vetorizada versus laços em Python com `%timeit`",
-            "Aplicar as regras de Broadcasting em operações entre arrays de dimensões distintas",
-            "Realizar fatiamento multidimensional e filtragem condicional em matrizes"
-        ],
-        cells_data=[
-            ("md", "## 1. Criação e Propriedades de Arrays"),
-            ("code", "import numpy as np\n\narr_1d = np.array([10, 20, 30, 40, 50], dtype=np.float64)\narr_zeros = np.zeros((3, 4))\narr_seq = np.linspace(0, 1, 11)  # 11 pontos igualmente espaçados de 0 a 1\n\nprint(f'Shape arr_zeros: {arr_zeros.shape}')\nprint(f'Dtype: {arr_1d.dtype}')\nprint(f'Sequência linspace:\\n{arr_seq}')"),
-            ("md", "## 2. Vetorização vs Laços Puros (Benchmark)"),
-            ("code", "tamanho = 1_000_000\nlista_python = list(range(tamanho))\narr_numpy = np.arange(tamanho)\n\n# Medindo tempo de elevação ao quadrado em Python puro\n%timeit [x**2 for x in lista_python]\n\n# Medindo tempo com vetorização NumPy\n%timeit arr_numpy ** 2"),
-            ("md", "## 3. Broadcasting na Prática\n\nO NumPy estende automaticamente arrays com dimensões compatíveis para realizar operações sem cópia explícita de dados."),
-            ("code", "matriz = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\n\nvetor = np.array([10, 20, 30])\n\n# Somando vetor (1, 3) a cada linha da matriz (3, 3)\nsoma_broadcasting = matriz + vetor\nprint(soma_broadcasting)"),
-            ("md", "## ✍️ Exercícios Práticos da Aula 11\n\n### Exercício 1 (Normalização Min-Max)\nDado o array `dados = np.array([15, 23, 18, 45, 12, 89, 34])`, normalize seus valores no intervalo $[0, 1]$ usando a fórmula: $x_{norm} = \\frac{x - x_{min}}{x_{max} - x_{min}}$."),
-            ("code", "dados = np.array([15, 23, 18, 45, 12, 89, 34])\ndados_norm = (dados - dados.min()) / (dados.max() - dados.min())\nprint(f'Normalizado: {dados_norm}')"),
-            ("md", "### Exercício 2 (Filtro Booleano em Matriz)\nCrie uma matriz $4 \\times 4$ de números aleatórios entre 0 e 100 (`np.random.default_rng(42)`) e substitua todos os valores menores que 50 por zero."),
-            ("code", "rng = np.random.default_rng(42)\nmatriz_aleatoria = rng.integers(0, 100, size=(4, 4))\nprint('Original:\\n', matriz_aleatoria)\n\nmatriz_aleatoria[matriz_aleatoria < 50] = 0\nprint('\\nModificada (valores < 50 zerados):\\n', matriz_aleatoria)")
-        ]
-    )
+    aula_id="Aula11",
+    title="Ciência dos Dados I: Análise Exploratória (2026)",
+    subtitle="Aula 11: Computação Científica de Alta Performance com NumPy",
+    objectives=[
+        'Criar e manipular arrays multidimensionais (`np.ndarray`) com tipos definidos (`dtype`)',
+        'Comparar a performance da computação vetorizada versus laços em Python com `%timeit`',
+        'Aplicar as regras de Broadcasting em operações entre arrays de dimensões distintas',
+        'Realizar fatiamento multidimensional e filtragem condicional em matrizes',
+        'Representar imagens em preto e branco como arrays (criar, inspecionar, inverter e limiarizar)',
+    ],
+    cells_data=[
+        ('md', '## 1. Criação e Propriedades de Arrays'),
+        ('code', "import numpy as np\n\narr_1d = np.array([10, 20, 30, 40, 50], dtype=np.float64)\narr_zeros = np.zeros((3, 4))\narr_seq = np.linspace(0, 1, 11)  # 11 pontos igualmente espaçados de 0 a 1\n\nprint(f'Shape arr_zeros: {arr_zeros.shape}')\nprint(f'Dtype: {arr_1d.dtype}')\nprint(f'Sequência linspace:\\n{arr_seq}')"),
+        ('md', '## 2. Vetorização vs Laços Puros (Benchmark)'),
+        ('code', 'tamanho = 1_000_000\nlista_python = list(range(tamanho))\narr_numpy = np.arange(tamanho)\n\n# Medindo tempo de elevação ao quadrado em Python puro\n%timeit [x**2 for x in lista_python]\n\n# Medindo tempo com vetorização NumPy\n%timeit arr_numpy ** 2'),
+        ('md', '## 3. Broadcasting na Prática\n\nO NumPy estende automaticamente arrays com dimensões compatíveis para realizar operações sem cópia explícita de dados.'),
+        ('code', 'matriz = np.array([\n    [1, 2, 3],\n    [4, 5, 6],\n    [7, 8, 9]\n])\n\nvetor = np.array([10, 20, 30])\n\n# Somando vetor (1, 3) a cada linha da matriz (3, 3)\nsoma_broadcasting = matriz + vetor\nprint(soma_broadcasting)'),
+        ('md', '## 4. Para além: imagens são arrays (preto e branco)\n\nEm preto e branco, uma imagem é um array 2D: cada célula guarda o brilho do pixel (0 = preto, 255 = branco, tons de cinza entre os dois). Por isso criar, fatiar, comparar e reduzir arrays também serve para processar imagens. Veja o exemplo trabalhado abaixo (não é exercício):'),
+        ('code', 'import numpy as np\n\n# "Imagem" sintética em escala de cinza 10x10 (gradiente vertical de 0 a 255)\nlinhas = np.linspace(0, 255, 10, dtype=int)\nimg = np.tile(linhas[:, None], (1, 10))      # broadcasting p/ montar o quadro 10x10\nprint(\'Imagem 10x10 (0=preto, 255=branco):\')\nprint(img)\nprint(\'Forma:\', img.shape)\n\nprint(\'Brilho canto sup. esq.\', img[0, 0], \'| canto inf. dir.\', img[-1, -1])\n\n# Inversão (negativo): 255 - brilho\nprint(\'Negativo (255 - img):\')\nprint(255 - img)\n\n# Limiarização: valores > 127 viram branco (255), resto preto (0)\nprint(\'Binária (np.where > 127):\')\nprint(np.where(img > 127, 255, 0))\n\n# Recorte (crop) do canto superior 3x3\nprint(\'Corte 3x3 (canto superior):\')\nprint(img[:3, :3])'),
+        ('md', '## 5. Fatiamento e Filtragem Condicional\n\n- Fatiamento multidimensional usa `[linhas, colunas]`, com `:` para "todas".\n- Filtro com máscaras booleanas: `arr[condicao]` seleciona só os elementos que satisfazem a condição.'),
+        ('code', "# Fatiamento multidimensional: [linhas, colunas]\nM = np.arange(1, 13).reshape(3, 4)\nprint('Matriz M (3x4):')\nprint(M)\nprint('Colunas 1 e 2 de todas as linhas:')\nprint(M[:, 1:3])\nprint('Linhas 1 em diante, coluna final:')\nprint(M[1:, -1])\n\n# Filtro com máscara booleana\nprint('Elementos pares:')\nprint(M[M % 2 == 0])\nprint('Elementos > 7 E pares:')\nprint(M[(M > 7) & (M % 2 == 0)])"),
+        ('md', '## ✍️ Exercícios Práticos da Aula 11\n\nResolva apenas com NumPy. **Não há gabarito**: verifique seus resultados usando os conceitos desta aula. O array dos problemas 1 a 6 já está dado na célula abaixo.'),
+        ('code', 'dados = np.array([15, 23, 18, 45, 12, 89, 34])'),
+        ('md', '### Exercício 1 (Forma e Inspeção)\nMostre a forma, o número de elementos e o tipo de `dados`.'),
+        ('code', ''),
+        ('md', '### Exercício 2 (Fatiamento)\nMostre os 3 primeiros e os 3 últimos valores de `dados`.'),
+        ('code', ''),
+        ('md', '### Exercício 3 (Estatísticas)\nCalcule a média, a mediana e o desvio padrão de `dados`.'),
+        ('code', ''),
+        ('md', '### Exercício 4 (Máscara com &)\nSelecione os valores de `dados` que são maiores que 40 **e** pares (use uma máscara com `&`).'),
+        ('code', ''),
+        ('md', '### Exercício 5 (Normalização Min-Max)\nPadronize `dados` no intervalo [0, 1]: `(dados - dados.min()) / (dados.max() - dados.min())`.'),
+        ('code', ''),
+        ('md', '### Exercício 6 (Ordenação)\nOrdene `dados` com `np.sort()`; mostre os 2 maiores e o valor do meio.'),
+        ('code', ''),
+        ('md', '### Exercício 7 (Matriz: Linha e Diagonal)\nCrie uma matriz 3x3 aleatória (`np.random.default_rng(0)`) entre 0 e 9 e mostre a **última linha** e a **diagonal principal**.'),
+        ('code', ''),
+        ('md', '### Exercício 8 (Broadcasting)\nMultiplique cada linha da matriz da questão 7 pelo vetor `[1, 2, 3]`.'),
+        ('code', ''),
+        ('md', '### Exercício 9 (Imagem em Preto e Branco)\nCrie uma "imagem" 8x8 com `np.zeros((8, 8))` e pinte o **quadrado central 2x2** de branco (`255`). Depois: (a) mostre quantos pixels são brancos; (b) **inverta** a imagem (`255 - img`) e veja o resultado; (c) **fatia** a metade superior (`img[:4, :]`).'),
+        ('code', ''),
+        ('md', '### Exercício 10 (Vetorização %timeit)\nCom `%timeit`, meça a elevação ao quadrado de uma lista de 10^6 elementos e de `np.arange(10**6)`; anote qual é mais rápido.'),
+        ('code', ''),
+    ]
+)
 
     # ----------------------------------------------------
     # Aula 12: Visualização de Dados I: Matplotlib
